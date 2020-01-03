@@ -18,6 +18,7 @@ Plug 'tpope/vim-dadbod'
 Plug 'OrangeT/vim-csharp'
 Plug 'tikhomirov/vim-glsl'
 Plug 'neovimhaskell/haskell-vim'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 if exists('+termguicolors')
@@ -26,13 +27,11 @@ if exists('+termguicolors')
     set termguicolors
 endif
 
-" colorscheme onedark
 colorscheme lucid
 
 let &t_ZH = "\e[3m"
 let &t_ZR = "\e[23m"
 highlight Comment cterm=italic gui=italic
-highlight Type cterm=italic gui=italic
 
 set autoindent                  " Сохранение отступа при переносе
 set expandtab                   " Перевод таба в пробелы
@@ -65,6 +64,7 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
 
+" Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
 
@@ -80,21 +80,16 @@ let g:airline#extensions#tabline#right_alt_sep = '' "' ' ''
 
 let g:airline_theme='lucid'
 
+" VimTex
 let g:tex_flavor='latex'
 let g:vimtex_view_method='skim'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal=''
 
+" Invsible characters
 set list
 set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»
-
-" IndentLine
-" let g:indentLine_char = '│'
-" let g:indentLine_leadingSpaceChar = '·'
-" let g:indentLine_leadingSpaceEnabled = 1
-" let g:indentLine_concealcursor = 1
-
 
 " NERD Tree
 map <C-n> :NERDTreeToggle<CR>
