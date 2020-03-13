@@ -1,6 +1,6 @@
 call plug#begin()
-Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lervag/vimtex'
 Plug 'ervandew/supertab'
@@ -8,17 +8,20 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'sirver/ultisnips', { 'for': 'tex' }
-Plug 'rust-lang/rust.vim'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'fatih/vim-go'
-Plug 'shmup/vim-sql-syntax'
 Plug 'cseelus/vim-colors-lucid'
 Plug 'tpope/vim-dadbod'
 Plug 'OrangeT/vim-csharp'
 Plug 'tikhomirov/vim-glsl'
 Plug 'neovimhaskell/haskell-vim'
-Plug 'morhetz/gruvbox'
+Plug 'Yggdroot/indentLine'
+Plug 'l04m33/vlime', {'rtp': 'vim/'}
+Plug 'bfrg/vim-cpp-modern'
+Plug 'luochen1990/rainbow', { 'for': 'lisp' }
+Plug 'ayu-theme/ayu-vim'
+Plug 'dart-lang/dart-vim-plugin'
 call plug#end()
 
 if exists('+termguicolors')
@@ -26,8 +29,6 @@ if exists('+termguicolors')
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
 endif
-
-colorscheme lucid
 
 let &t_ZH = "\e[3m"
 let &t_ZR = "\e[23m"
@@ -65,20 +66,41 @@ if has("autocmd")
 endif
 
 " Airline
+let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
 
-let g:airline_left_sep = '' "' ' ''
-let g:airline_left_alt_sep = '' "' ' ''
-let g:airline_right_sep = '' "' ' ''
-let g:airline_right_alt_sep = '' "' ' ''
+let g:airline#extensions#tabline#tab_min_count = 2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#show_close_button = 0
 
-let g:airline#extensions#tabline#left_sep = ' ' "' ' ''
-let g:airline#extensions#tabline#left_alt_sep = '' "' ' ''
-let g:airline#extensions#tabline#right_sep = '' "' ' ''
-let g:airline#extensions#tabline#right_alt_sep = '' "' ' ''
+let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
 
-let g:airline_theme='lucid'
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
+
+" let g:airline#extensions#tabline#left_sep = ''
+" let g:airline#extensions#tabline#left_alt_sep = ''
+" let g:airline#extensions#tabline#right_sep = ''
+" let g:airline#extensions#tabline#right_alt_sep = ''
+
+let g:airline_left_sep = ' '
+let g:airline_left_alt_sep = '│'
+let g:airline_right_sep = ' '
+let g:airline_right_alt_sep = '│'
+
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '│'
+let g:airline#extensions#tabline#right_sep = ' '
+let g:airline#extensions#tabline#right_alt_sep = '│'
 
 " VimTex
 let g:tex_flavor='latex'
@@ -131,3 +153,25 @@ function! QtCppIndent()
   return &shiftwidth
 endfunc
 set indentexpr=QtCppIndent()
+
+" Haskell
+let g:haskell_indent_if = 3
+let g:haskell_indent_case = 4
+let g:haskell_indent_let = 4
+let g:haskell_indent_where = 6
+let g:haskell_indent_before_where = 2
+let g:haskell_indent_do = 3
+let g:haskell_indent_in = 1
+let g:haskell_indent_guard = 4
+
+" IndentLine
+let g:indentLine_char = '│'
+let g:indentLine_first_char = '│'
+let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_setColors = 0
+
+"Rainbow
+let g:rainbow_active = 1
+
+let ayucolor="mirage" " for mirage version of theme
+colorscheme ayu
