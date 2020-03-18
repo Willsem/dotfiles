@@ -8,10 +8,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'sirver/ultisnips', { 'for': 'tex' }
-Plug 'tmux-plugins/vim-tmux'
-Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'fatih/vim-go'
-Plug 'cseelus/vim-colors-lucid'
 Plug 'tpope/vim-dadbod'
 Plug 'OrangeT/vim-csharp'
 Plug 'tikhomirov/vim-glsl'
@@ -23,16 +20,6 @@ Plug 'luochen1990/rainbow', { 'for': 'lisp' }
 Plug 'ayu-theme/ayu-vim'
 Plug 'dart-lang/dart-vim-plugin'
 call plug#end()
-
-if exists('+termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
-endif
-
-let &t_ZH = "\e[3m"
-let &t_ZR = "\e[23m"
-highlight Comment cterm=italic gui=italic
 
 set autoindent                  " Сохранение отступа при переносе
 set expandtab                   " Перевод таба в пробелы
@@ -82,25 +69,15 @@ let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 
-" let g:airline_left_sep = ''
-" let g:airline_left_alt_sep = ''
-" let g:airline_right_sep = ''
-" let g:airline_right_alt_sep = ''
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 
-" let g:airline#extensions#tabline#left_sep = ''
-" let g:airline#extensions#tabline#left_alt_sep = ''
-" let g:airline#extensions#tabline#right_sep = ''
-" let g:airline#extensions#tabline#right_alt_sep = ''
-
-let g:airline_left_sep = ' '
-let g:airline_left_alt_sep = '│'
-let g:airline_right_sep = ' '
-let g:airline_right_alt_sep = '│'
-
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '│'
-let g:airline#extensions#tabline#right_sep = ' '
-let g:airline#extensions#tabline#right_alt_sep = '│'
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
 
 " VimTex
 let g:tex_flavor='latex'
@@ -173,5 +150,12 @@ let g:indentLine_setColors = 0
 "Rainbow
 let g:rainbow_active = 1
 
-let ayucolor="mirage" " for mirage version of theme
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+endif
+
+let ayucolor="mirage"
 colorscheme ayu
+highlight Comment cterm=italic gui=italic
