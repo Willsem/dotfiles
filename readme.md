@@ -1,3 +1,3 @@
 # Config files
 
-[!example](img/example.png)
+![example](img/example.png)
