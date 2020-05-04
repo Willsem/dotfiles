@@ -3,7 +3,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lervag/vimtex'
-Plug 'ervandew/supertab'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
@@ -19,6 +18,10 @@ Plug 'bfrg/vim-cpp-modern'
 Plug 'luochen1990/rainbow', { 'for': 'lisp' }
 Plug 'ayu-theme/ayu-vim'
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 call plug#end()
 
 set autoindent                  " Сохранение отступа при переносе
@@ -57,7 +60,7 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
 
-let g:airline#extensions#tabline#tab_min_count = 2
+" let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_splits = 0
@@ -69,15 +72,15 @@ let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
+let g:airline_left_sep = ' '
+let g:airline_left_alt_sep = '│'
+let g:airline_right_sep = ' '
+let g:airline_right_alt_sep = '│'
 
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#right_sep = ''
-let g:airline#extensions#tabline#right_alt_sep = ''
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '│'
+let g:airline#extensions#tabline#right_sep = ' '
+let g:airline#extensions#tabline#right_alt_sep = '│'
 
 " VimTex
 let g:tex_flavor='latex'
@@ -150,12 +153,25 @@ let g:indentLine_setColors = 0
 "Rainbow
 let g:rainbow_active = 1
 
+" Coc
+let g:coc_global_extensions=['coc-omnisharp']
+
+" OmniSharp
+let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_server_use_mono = 1
+let g:OmniSharp_highlight_types = 3
+let g:OmniSharp_server_stdio_quickload = 1
+
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
 endif
 
-let ayucolor="mirage"
+" let ayucolor="mirage"
+let ayucolor="dark"
+" let ayucolor="light"
 colorscheme ayu
+
 highlight Comment cterm=italic gui=italic
+highlight EndOfBuffer guifg = bg
