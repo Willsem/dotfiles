@@ -10,14 +10,6 @@ source $ZSH/oh-my-zsh.sh
 
 
 # ====================================================================================
-#                             ZSH-AUTOSUGGESTIONS PLUGIN
-# ====================================================================================
-
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240"
-
-
-
-# ====================================================================================
 #                                      ALIASES
 # ====================================================================================
 
@@ -28,7 +20,7 @@ alias llt="exa -lh --tree"
 alias tmux="env TERM=screen-256color tmux"
 alias size="du -sh * | sort -h"
 alias cls="clear"
-alias ssh="kitty +kitten ssh"
+alias matlab="matlab -nodisplay -nosplash -nodesktop"
 
 
 
@@ -43,6 +35,11 @@ export VK_LAYER_PATH=/macOS/etc/vulkan/explicit_layers.d
 export VK_ICD_FILENAMES=/macOS/etc/vulkan/icd.d/MoltenVK_icd.json
 export PATH="$PATH:/Users/alex/development/flutter/bin"
 export PATH="$PATH:/Applications/MATLAB_R2019b.app/bin"
+export PATH="$PATH:/usr/local/Cellar/llvm/9.0.1/bin"
+export VULKAN_SDK="vulkansdk/macOS"
+export PATH="$VULKAN_SDK/bin:$PATH"
+export DYLD_LIBRARY_PATH="$VULKAN_SDK/lib:$DYLD_LIBRARY_PATH"
+export VK_ICD_FILENAMES="$VULKAN_SDK/etc/vulkan/icd.d/MoltenVK_icd.json"
 
 
 
@@ -92,6 +89,6 @@ POWERLEVEL9K_STATUS_BACKGROUND="background"
 POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND="background"
 
 # Promt
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="$ "
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭─"
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰ "
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
