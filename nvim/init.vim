@@ -21,7 +21,13 @@ Plug 'dart-lang/dart-vim-plugin'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'OmniSharp/omnisharp-vim'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'adamclerk/vim-razor'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'airblade/vim-gitgutter'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'mattn/emmet-vim'
+Plug 'dracula/vim'
+Plug 'pangloss/vim-javascript'
 call plug#end()
 
 set autoindent                  " Сохранение отступа при переносе
@@ -42,7 +48,7 @@ set mousemodel=popup            " Не выгружать буфер
 set noshowmode
 
 set ignorecase                  " Игнорировать регистр при поиске
-set hlsearch                    " Подсветка поиска
+set nohlsearch                    " Подсветка поиска
 set incsearch
 set showmatch
 
@@ -60,7 +66,6 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
 
-" let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_splits = 0
@@ -72,16 +77,6 @@ let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 
-let g:airline_left_sep = ' '
-let g:airline_left_alt_sep = '│'
-let g:airline_right_sep = ' '
-let g:airline_right_alt_sep = '│'
-
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '│'
-let g:airline#extensions#tabline#right_sep = ' '
-let g:airline#extensions#tabline#right_alt_sep = '│'
-
 " VimTex
 let g:tex_flavor='latex'
 let g:vimtex_view_method='skim'
@@ -92,12 +87,13 @@ let g:tex_conceal=''
 " Invsible characters
 set list
 set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=white guibg=#cc0000
 
 " NERD Tree
 map <C-n> :NERDTreeToggle<CR>
 map <F5> :NERDTreeRefresh<CR>
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " TagBar
 nmap <F8> :TagbarToggle<CR>
@@ -110,27 +106,27 @@ let g:UltiSnipsSnippetDirectories = ["."]
 
 " Indents for C++
 function! QtCppIndent()
-  let labelpat='signals:\|slots:\|public:\|protected:\|private:\|Q_OBJECT'
-  let declpat='\(;\|{\|}\)\_s*.'
-  if match(getline(v:lnum),labelpat) != -1
-    return 0
-  endif
-  if match(getline(v:lnum),'^\s*}') != -1
-    return cindent(v:lnum)
-  endif
-  let pos=getpos('.')
-  call setpos('.',[0,v:lnum,1,0])
-  call search(declpat,'beW',v:lnum>10?v:lnum-10:0)
-  let prevlnum = line('.')
-  call search(declpat,'eW',v:lnum<=line('$')-10?v:lnum+10:0)
-  let nextlnum = line('.')
-  call setpos('.',pos)
-  if match(getline(prevlnum),labelpat)==-1
-    return cindent(v:lnum)
-  elseif nextlnum != v:lnum && prevlnum != prevnonblank(v:lnum-1)
-    return cindent(v:lnum)
-  endif
-  return &shiftwidth
+    let labelpat='signals:\|slots:\|public:\|protected:\|private:\|Q_OBJECT'
+    let declpat='\(;\|{\|}\)\_s*.'
+    if match(getline(v:lnum),labelpat) != -1
+        return 0
+    endif
+    if match(getline(v:lnum),'^\s*}') != -1
+        return cindent(v:lnum)
+    endif
+    let pos=getpos('.')
+    call setpos('.',[0,v:lnum,1,0])
+    call search(declpat,'beW',v:lnum>10?v:lnum-10:0)
+    let prevlnum = line('.')
+    call search(declpat,'eW',v:lnum<=line('$')-10?v:lnum+10:0)
+    let nextlnum = line('.')
+    call setpos('.',pos)
+    if match(getline(prevlnum),labelpat)==-1
+        return cindent(v:lnum)
+    elseif nextlnum != v:lnum && prevlnum != prevnonblank(v:lnum-1)
+        return cindent(v:lnum)
+    endif
+    return &shiftwidth
 endfunc
 set indentexpr=QtCppIndent()
 
@@ -148,7 +144,7 @@ let g:haskell_indent_guard = 4
 let g:indentLine_char = '│'
 let g:indentLine_first_char = '│'
 let g:indentLine_showFirstIndentLevel = 1
-let g:indentLine_setColors = 0
+let g:indentLine_setColors = 1
 
 "Rainbow
 let g:rainbow_active = 1
@@ -168,10 +164,7 @@ if exists('+termguicolors')
     set termguicolors
 endif
 
-" let ayucolor="mirage"
-let ayucolor="dark"
-" let ayucolor="light"
-colorscheme ayu
+colorscheme dracula
 
 highlight Comment cterm=italic gui=italic
 highlight EndOfBuffer guifg = bg
