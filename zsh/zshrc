@@ -13,10 +13,10 @@ source $ZSH/oh-my-zsh.sh
 #                                      ALIASES
 # ====================================================================================
 
-alias l="exa -lahGg"
-alias ll="exa -lhGg"
-alias lt="exa -lah --tree"
-alias llt="exa -lh --tree"
+alias l="lsd -lah"
+alias ll="lsd -lh"
+alias lt="lsd -lah --tree"
+alias llt="lsd -lh --tree"
 alias tmux="env TERM=screen-256color tmux"
 alias size="du -sh * | sort -h"
 alias cls="clear"
