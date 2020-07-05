@@ -1,94 +1,19 @@
-# ====================================================================================
-#                                     OH-MY-ZSH
-# ====================================================================================
-
 export ZSH="/Users/alex/.oh-my-zsh"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="willsem"
 plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
-
-
-# ====================================================================================
-#                                      ALIASES
-# ====================================================================================
-
-alias l="lsd -lah"
-alias ll="lsd -lh"
-alias lt="lsd -lah --tree"
-alias llt="lsd -lh --tree"
+alias l="exa -lahgG"
+alias ll="exa -lhgG"
+alias lt="exa -lahg --tree"
+alias llt="exa -lhg --tree"
 alias tmux="env TERM=screen-256color tmux"
 alias size="du -sh * | sort -h"
 alias cls="clear"
-alias matlab="matlab -nodisplay -nosplash -nodesktop"
-
-
-
-# ====================================================================================
-#                                     EXPORTS
-# ====================================================================================
 
 export CMAKE_PREFIX_PATH=/usr/local/opt/qt5/
 export EDITOR='nvim'
 export VISUAL='nvim'
 export VK_LAYER_PATH=/macOS/etc/vulkan/explicit_layers.d
 export VK_ICD_FILENAMES=/macOS/etc/vulkan/icd.d/MoltenVK_icd.json
-export PATH="$PATH:/Users/alex/development/flutter/bin"
-export PATH="$PATH:/Applications/MATLAB_R2019b.app/bin"
 export PATH="$PATH:/usr/local/Cellar/llvm/9.0.1/bin"
-export VULKAN_SDK="vulkansdk/macOS"
-export PATH="$VULKAN_SDK/bin:$PATH"
-export DYLD_LIBRARY_PATH="$VULKAN_SDK/lib:$DYLD_LIBRARY_PATH"
-export VK_ICD_FILENAMES="$VULKAN_SDK/etc/vulkan/icd.d/MoltenVK_icd.json"
-
-
-
-# ====================================================================================
-#                               CONFIGURATION P9K (P10K)
-# ====================================================================================
-
-POWERLEVEL9K_MODE="nerdfont-complete"
-
-# Elements
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time)
-
-# New lines for command and promt
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-
-# Minimal time for show execution time
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
-
-# Separators
-POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=""
-POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=""
-POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=""
-POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=""
-
-# Colors
-POWERLEVEL9K_DIR_BACKGROUND="background"
-POWERLEVEL9K_DIR_FOREGROUND="blue"
-
-POWERLEVEL9K_VCS_BACKGROUND="background"
-POWERLEVEL9K_VCS_FOREGROUND="green"
-
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND="background"
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND="foreground"
-
-POWERLEVEL9K_STATUS_ERROR_BACKGROUND="background"
-POWERLEVEL9K_STATUS_ERROR_FOREGROUND="red"
-
-POWERLEVEL9K_DIR_PATH_SEPARATOR_FOREGROUND="gray"
-
-POWERLEVEL9K_OS_ICON_BACKGROUND="background"
-POWERLEVEL9K_OS_ICON_FOREGROUND="foreground"
-
-POWERLEVEL9K_STATUS_BACKGROUND="background"
-
-POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND="background"
-
-# Promt
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭─"
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰ "
-[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
