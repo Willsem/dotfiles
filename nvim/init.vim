@@ -3,20 +3,15 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lervag/vimtex'
-Plug 'majutsushi/tagbar'
 Plug 'sirver/ultisnips', { 'for': 'tex' }
 Plug 'fatih/vim-go'
 Plug 'tpope/vim-dadbod'
-Plug 'l04m33/vlime', {'rtp': 'vim/'}
 Plug 'bfrg/vim-cpp-modern'
-Plug 'luochen1990/rainbow', { 'for': 'lisp' }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'mattn/emmet-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'sheerun/vim-polyglot'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 Plug 'nvim-lua/popup.nvim'
@@ -24,6 +19,9 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ghifarit53/tokyonight-vim'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
 set autoindent                  " Сохранение отступа при переносе
@@ -35,7 +33,7 @@ set tabstop=4                   " Размер таба = 4 пробела
 set smartindent                 " Умные отступы
 
 set number                      " Нумерация строк
-set relativenumber
+set ruler
 set cursorline                  " Подстветка строки
 
 set backspace=indent,eol,start  " Удаление бекспейсом
@@ -151,16 +149,32 @@ let g:OmniSharp_server_stdio_quickload = 1
 let g:OmniSharp_proc_debug = 1
 let g:OmniSharp_loglevel = 'debug'
 
-nnoremap <c-p> :lua require'telescope.builtin'.find_files{}<CR>
-
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
 endif
 
-colorscheme dracula
+let g:tokyonight_style = 'storm'
+let g:tokyonight_enable_italic = 1
 
-hi Normal ctermbg=NONE guibg=NONE
-highlight Comment cterm=italic gui=italic
-highlight EndOfBuffer guifg = bg
+colorscheme tokyonight
+hi EndOfBuffer guifg = bg
+" hi Normal ctermbg=NONE guibg=NONE
+" highlight nonText ctermbg=NONE guibg=NONE
+
+nnoremap <c-p> :lua require'telescope.builtin'.find_files{}<CR>
+
+lua require'nvim_lsp'.clangd.setup{on_attach=require'completion'.on_attach}
+lua require'nvim_lsp'.cmake.setup{on_attach=require'completion'.on_attach}
+lua require'nvim_lsp'.pyls.setup{on_attach=require'completion'.on_attach}
+lua require'nvim_lsp'.texlab.setup{on_attach=require'completion'.on_attach}
+lua require'nvim_lsp'.omnisharp.setup{on_attach=require'completion'.on_attach}
+lua require'nvim_lsp'.ghcide.setup{on_attach=require'completion'.on_attach}
+lua require'nvim-web-devicons'.setup()
+
+autocmd BufEnter * lua require'completion'.on_attach()
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
