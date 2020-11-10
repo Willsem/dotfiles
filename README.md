@@ -5,7 +5,7 @@
 ## Now using
 
 * Operating system - `MacOS Big Sur (11.0)`
-* Terminal emulator - `Alacritty`
+* Terminal emulator - `Kitty
 * Zsh plugin manager - `oh my zsh`
 * Text editor - `NeoVim`
 * Vim plugin manager - `vim-plug`
