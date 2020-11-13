@@ -22,6 +22,7 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'Yggdroot/indentLine'
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 set autoindent                  " Сохранение отступа при переносе
@@ -158,7 +159,8 @@ endif
 let g:tokyonight_style = 'storm'
 let g:tokyonight_enable_italic = 1
 
-colorscheme tokyonight
+colorscheme dracula
+" colorscheme tokyonight
 hi EndOfBuffer guifg = bg
 " hi Normal ctermbg=NONE guibg=NONE
 " highlight nonText ctermbg=NONE guibg=NONE
