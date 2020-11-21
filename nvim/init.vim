@@ -13,16 +13,15 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'neovim/nvim-lspconfig'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/telescope.nvim'
-Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'Yggdroot/indentLine'
-Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 set autoindent                  " Сохранение отступа при переносе
@@ -75,12 +74,22 @@ let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ' '
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ' '
+
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ' '
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ' '
+
 " VimTex
 let g:tex_flavor='latex'
 let g:vimtex_view_method='skim'
 let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal=''
+set conceallevel=0
+let g:tex_conceal=""
 
 " Invsible characters
 set list
@@ -159,24 +168,71 @@ endif
 let g:tokyonight_style = 'storm'
 let g:tokyonight_enable_italic = 1
 
-colorscheme dracula
-" colorscheme tokyonight
+let g:lightline = {'colorscheme' : 'tokyonight'}
+colorscheme tokyonight
 hi EndOfBuffer guifg = bg
-" hi Normal ctermbg=NONE guibg=NONE
-" highlight nonText ctermbg=NONE guibg=NONE
 
 nnoremap <c-p> :lua require'telescope.builtin'.find_files{}<CR>
-
-lua require'nvim_lsp'.clangd.setup{on_attach=require'completion'.on_attach}
-lua require'nvim_lsp'.cmake.setup{on_attach=require'completion'.on_attach}
-lua require'nvim_lsp'.pyls.setup{on_attach=require'completion'.on_attach}
-lua require'nvim_lsp'.texlab.setup{on_attach=require'completion'.on_attach}
-lua require'nvim_lsp'.omnisharp.setup{on_attach=require'completion'.on_attach}
-lua require'nvim_lsp'.ghcide.setup{on_attach=require'completion'.on_attach}
-lua require'nvim-web-devicons'.setup()
 
 autocmd BufEnter * lua require'completion'.on_attach()
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
+
+lua <<EOF
+local nvim_lsp = require 'nvim_lsp'
+
+nvim_lsp.ccls.setup {
+    filetypes = { "c", "cc", "cpp" },
+    on_attach = require'completion'.on_attach,
+    init_options = {
+        highlight = {
+            lsRanges = true;
+        }
+    }
+}
+
+nvim_lsp.cmake.setup {
+    on_attach = require'completion'.on_attach
+}
+
+nvim_lsp.pyls.setup {
+    on_attach = require'completion'.on_attach
+}
+
+nvim_lsp.texlab.setup {
+    on_attach = require'completion'.on_attach
+}
+
+nvim_lsp.omnisharp.setup {
+    on_attach = require'completion'.on_attach
+}
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    -- Enable underline, use default values
+    underline = true,
+    -- Enable virtual text, override spacing to 4
+    virtual_text = {
+      spacing = 4,
+      prefix = '',
+    },
+    -- Use a function to dynamically turn signs off
+    -- and on, using buffer local variables
+    signs = function(bufnr, client_id)
+      local ok, result = pcall(vim.api.nvim_buf_get_var, bufnr, 'show_signs')
+      -- No buffer local variable set, so just enable by default
+      if not ok then
+        return true
+      end
+
+      return result
+    end,
+    -- Disable a feature
+    update_in_insert = false,
+  }
+)
+
+require'nvim-web-devicons'.setup()
+EOF
