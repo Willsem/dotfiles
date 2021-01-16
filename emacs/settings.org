@@ -1,0 +1,192 @@
+Emacs configuration
+
+* General settings
+
+** Dont'show startup message
+    #+BEGIN_SRC emacs-lisp
+    (setq inhibit-startup-message t)
+    #+END_SRC
+
+** Don't show toolbar
+    #+BEGIN_SRC emacs-lisp
+    (tool-bar-mode -1)
+    #+END_SRC
+
+** Dont't show menu
+    #+BEGIN_SRC emacs-lisp
+    (menu-bar-mode -1)
+    #+END_SRC
+
+** Don't show scrollbar
+    #+BEGIN_SRC emacs-lisp
+    (scroll-bar-mode -1)
+    #+END_SRC
+
+** Highlight line
+    #+BEGIN_SRC emacs-lisp
+    (global-hl-line-mode +1)
+    #+END_SRC
+
+** Delete selection
+    #+BEGIN_SRC emacs-lisp
+    (delete-selection-mode 1)
+    #+END_SRC
+
+** Different backup directory
+    #+BEGIN_SRC emacs-lisp
+    (setq backup-directory-alist '(("." . "~/.saves")))
+    #+END_SRC
+
+** Display line numbers when programming
+    #+BEGIN_SRC emacs-lisp
+    (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+    #+END_SRC
+
+** Show matching parenthesis
+    #+BEGIN_SRC emacs-lisp
+    (show-paren-mode 1)
+    #+END_SRC
+
+** Smooth scrolling
+    #+BEGIN_SRC emacs-lisp
+    (setq scroll-step 1)
+    (setq scroll-margin 0)
+    (setq scroll-conservatively 100000)
+    #+END_SRC
+
+** Change default directory
+    #+BEGIN_SRC emacs-lisp
+    (setq default-directory "~/")
+    #+END_SRC
+
+** Indent settings
+
+*** Disable tabs
+    #+BEGIN_SRC emacs-lisp
+    (setq-default indent-tabs-mode nil)
+    #+END_SRC
+
+*** Indent width
+    #+BEGIN_SRC emacs-lisp
+    (setq-default tab-width 4)
+    (setq-default c-basic-offset 4)
+    (setq-default standart-indent 4)
+    (setq-default lisp-body-indent 4)
+    #+END_SRC
+
+*** Make indent when press enter
+    #+BEGIN_SRC emacs-lisp
+    (global-set-key (kbd "RET") 'newline-and-indent)
+    (setq lisp-indent-function  'common-lisp-indent-function)
+    #+END_SRC
+
+* UI
+
+** Colorscheme
+    #+BEGIN_SRC emacs-lisp
+    (use-package doom-themes
+        :ensure t
+        :config
+            (setq doom-themes-enable-bold t
+                  doom-themes-enable-italic t)
+            (load-theme 'doom-moonlight t))
+    #+END_SRC
+
+** Modeline
+    #+BEGIN_SRC emacs-lisp
+    (use-package doom-modeline
+        :ensure t
+        :init (doom-modeline-mode 1))
+    #+END_SRC
+
+** All the icons
+    #+BEGIN_SRC emacs-lisp
+    (use-package all-the-icons
+        :ensure t)
+    #+END_SRC
+
+** Set font
+    #+BEGIN_SRC emacs-lisp
+    (set-frame-font "JetBrainsMono Nerd Font 15" nil t)
+    #+END_SRC
+
+** Enagle ligatures
+    #+BEGIN_SRC emacs-lisp
+    (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
+                   (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
+                   (36 . ".\\(?:>\\)")
+                   (37 . ".\\(?:\\(?:%%\\)\\|%\\)")
+                   (38 . ".\\(?:\\(?:&&\\)\\|&\\)")
+                   (42 . ".\\(?:\\(?:\\*\\*/\\)\\|\\(?:\\*[*/]\\)\\|[*/>]\\)")
+                   (43 . ".\\(?:\\(?:\\+\\+\\)\\|[+>]\\)")
+                   (45 . ".\\(?:\\(?:-[>-]\\|<<\\|>>\\)\\|[<>}~-]\\)")
+                   (46 . ".\\(?:\\(?:\\.[.<]\\)\\|[.=-]\\)")
+                   (47 . ".\\(?:\\(?:\\*\\*\\|//\\|==\\)\\|[*/=>]\\)")
+                   (48 . ".\\(?:x[a-zA-Z]\\)")
+                   (58 . ".\\(?:::\\|[:=]\\)")
+                   (59 . ".\\(?:;;\\|;\\)")
+                   (60 . ".\\(?:\\(?:!--\\)\\|\\(?:~~\\|->\\|\\$>\\|\\*>\\|\\+>\\|--\\|<[<=-]\\|=[<=>]\\||>\\)\\|[*$+~/<=>|-]\\)")
+                   (61 . ".\\(?:\\(?:/=\\|:=\\|<<\\|=[=>]\\|>>\\)\\|[<=>~]\\)")
+                   (62 . ".\\(?:\\(?:=>\\|>[=>-]\\)\\|[=>-]\\)")
+                   (63 . ".\\(?:\\(\\?\\?\\)\\|[:=?]\\)")
+                   (91 . ".\\(?:]\\)")
+                   (92 . ".\\(?:\\(?:\\\\\\\\\\)\\|\\\\\\)")
+                   (94 . ".\\(?:=\\)")
+                   (119 . ".\\(?:ww\\)")
+                   (123 . ".\\(?:-\\)")
+                   (124 . ".\\(?:\\(?:|[=|]\\)\\|[=>|]\\)")
+                   (126 . ".\\(?:~>\\|~~\\|[>=@~-]\\)"))))
+    (dolist (char-regexp alist)
+        (set-char-table-range composition-function-table (car char-regexp)
+                            `([,(cdr char-regexp) 0 font-shape-gstring]))))
+    #+END_SRC
+
+** Centaur tabs
+    #+BEGIN_SRC emacs-lisp
+    (use-package centaur-tabs
+        :ensure t
+        :config
+        (setq centaur-tabs-height 32
+              centaur-tabs-style "bar"
+              centaur-tabs-set-icons t
+              centaur-tabs-set-bar 'left
+              centaur-tabs-set-modified-marker t
+              centaur-tabs-modified-marker "●"
+              centaur-tabs-enable-key-bindings t)
+              (centaur-tabs-mode t))
+    #+END_SRC
+
+** Org mode
+
+*** Org bullets
+    #+BEGIN_SRC emacs-lisp
+    (use-package org-bullets
+        :ensure t
+        :config
+        (add-hook 'org-mode-hook (lambda() (org-bullets-mode 1))))
+    #+END_SRC
+
+*** Org settings
+    #+BEGIN_SRC emacs-lisp
+    (setq org-support-shift-select t)
+    #+END_SRC
+
+* General Packages
+
+** Dashboard
+    #+BEGIN_SRC emacs-lisp
+    (use-package dashboard
+        :ensure t
+        :config
+        (dashboard-setup-startup-hook))
+    #+END_SRC
+
+** Treemacs
+    #+BEGIN_SRC emacs-lisp
+    (use-package treemacs
+        :ensure t
+        :bind
+        (:map global-map ([f8] . treemacs))
+        :config
+            (setq treemacs-is-never-other-window t))
+    #+END_SRC
