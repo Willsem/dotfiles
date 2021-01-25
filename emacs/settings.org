@@ -1,117 +1,132 @@
-Emacs configuration
-
 * General settings
 
 ** Dont'show startup message
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (setq inhibit-startup-message t)
-    #+END_SRC
+    #+end_src
 
 ** Don't show toolbar
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (tool-bar-mode -1)
-    #+END_SRC
+    #+end_src
 
 ** Dont't show menu
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (menu-bar-mode -1)
-    #+END_SRC
+    #+end_src
 
 ** Don't show scrollbar
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (scroll-bar-mode -1)
-    #+END_SRC
+    #+end_src
 
 ** Highlight line
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (global-hl-line-mode +1)
-    #+END_SRC
+    #+end_src
 
 ** Delete selection
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (delete-selection-mode 1)
-    #+END_SRC
+    #+end_src
 
 ** Different backup directory
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (setq backup-directory-alist '(("." . "~/.saves")))
-    #+END_SRC
+    #+end_src
 
 ** Display line numbers when programming
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (add-hook 'prog-mode-hook 'display-line-numbers-mode)
-    #+END_SRC
+    #+end_src
 
 ** Show matching parenthesis
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (show-paren-mode 1)
-    #+END_SRC
+    #+end_src
 
 ** Smooth scrolling
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (setq scroll-step 1)
     (setq scroll-margin 0)
     (setq scroll-conservatively 100000)
-    #+END_SRC
+    #+end_src
 
 ** Change default directory
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (setq default-directory "~/")
-    #+END_SRC
+    #+end_src
 
 ** Indent settings
 
 *** Disable tabs
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (setq-default indent-tabs-mode nil)
-    #+END_SRC
+    #+end_src
 
 *** Indent width
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (setq-default tab-width 4)
     (setq-default c-basic-offset 4)
     (setq-default standart-indent 4)
     (setq-default lisp-body-indent 4)
-    #+END_SRC
+    #+end_src
 
 *** Make indent when press enter
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (global-set-key (kbd "RET") 'newline-and-indent)
     (setq lisp-indent-function  'common-lisp-indent-function)
-    #+END_SRC
+    #+end_src
+
+** Switch off bell
+   #+begin_src emacs-lisp
+   (setq ring-bell-function 'ignore)
+   #+end_src
+
+** Ctrl as cmd
+   #+begin_src emacs-lisp
+   (setq mac-command-modifier 'control)
+   #+end_src
+
+** Option as meta
+   #+begin_src emacs-lisp
+   (setq mac-option-modifier 'meta
+         ns-option-modifier 'meta)
+   (setq mac-right-option-modifier nil)
+   #+end_src
 
 * UI
 
 ** Colorscheme
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (use-package doom-themes
         :ensure t
         :config
             (setq doom-themes-enable-bold t
                   doom-themes-enable-italic t)
             (load-theme 'doom-moonlight t))
-    #+END_SRC
+    #+end_src
 
 ** Modeline
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (use-package doom-modeline
         :ensure t
         :init (doom-modeline-mode 1))
-    #+END_SRC
+    #+end_src
 
 ** All the icons
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (use-package all-the-icons
         :ensure t)
-    #+END_SRC
+    #+end_src
 
 ** Set font
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (set-frame-font "JetBrainsMono Nerd Font 15" nil t)
-    #+END_SRC
+    #+end_src
 
 ** Enagle ligatures
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
                    (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
                    (36 . ".\\(?:>\\)")
@@ -139,54 +154,139 @@ Emacs configuration
     (dolist (char-regexp alist)
         (set-char-table-range composition-function-table (car char-regexp)
                             `([,(cdr char-regexp) 0 font-shape-gstring]))))
-    #+END_SRC
+    #+end_src
 
 ** Centaur tabs
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (use-package centaur-tabs
         :ensure t
         :config
         (setq centaur-tabs-height 32
               centaur-tabs-style "bar"
               centaur-tabs-set-icons t
-              centaur-tabs-set-bar 'left
+              centaur-tabs-set-bar 'under
+              x-underline-at-descent-line t
               centaur-tabs-set-modified-marker t
               centaur-tabs-modified-marker "●"
               centaur-tabs-enable-key-bindings t)
               (centaur-tabs-mode t))
-    #+END_SRC
+    #+end_src
 
 ** Org mode
 
 *** Org bullets
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (use-package org-bullets
         :ensure t
         :config
         (add-hook 'org-mode-hook (lambda() (org-bullets-mode 1))))
-    #+END_SRC
+    #+end_src
 
-*** Org settings
-    #+BEGIN_SRC emacs-lisp
+*** Org settings 
+    #+begin_src emacs-lisp
     (setq org-support-shift-select t)
-    #+END_SRC
+    #+end_src
+
+** Highlight indent
+   #+begin_src emacs-lisp
+   (use-package highlight-indent-guides
+       :ensure t
+       :config
+       (setq highlight-indent-guides-method 'character)
+       (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
+   #+end_src
 
 * General Packages
 
 ** Dashboard
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (use-package dashboard
         :ensure t
         :config
         (dashboard-setup-startup-hook))
-    #+END_SRC
+    #+end_src
 
 ** Treemacs
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (use-package treemacs
         :ensure t
         :bind
         (:map global-map ([f8] . treemacs))
         :config
             (setq treemacs-is-never-other-window t))
-    #+END_SRC
+    #+end_src
+** Projectile
+   #+begin_src emacs-lisp
+   (use-package projectile
+       :ensure t
+       :config
+       (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
+       (projectile-mode +1))
+   #+end_src
+
+* Language support
+
+** Lsp
+    #+begin_src emacs-lisp
+    (use-package lsp-mode
+        :ensure t
+        :commands lsp
+        :hook
+        (haskell-mode . lsp))
+    (use-package lsp-ui
+        :ensure t
+        :commands lsp-ui-mode)
+    (setq lsp-ui-doc-enable nil)
+    (use-package company-lsp
+        :ensure t
+        :commands company-lsp)
+    (use-package flycheck
+        :ensure t
+        :init
+        (global-flycheck-mode t))
+    (use-package yasnippet
+        :ensure t)
+    #+end_src
+
+** C++
+   #+begin_src emacs-lisp
+   (use-package ccls
+       :ensure t
+       :config
+       (setq ccls-executable "clangd")
+       :hook ((c-mode c++-mode objc-mode) .
+           (lambda () (require 'ccls) (lsp))))
+   #+end_src
+
+** CMake
+   #+begin_src emacs-lisp
+   #+end_src
+
+** Python
+   #+begin_src emacs-lisp
+   ;;(lsp-define-stdio-client lsp-python "python"
+   ;;                          #'projectile-project-root
+   ;;                          '("pyls"))
+   ;;(add-hook 'python-mode-hook 'lsp-python-enable)
+   #+end_src
+
+** C#
+   #+begin_src emacs-lisp
+   #+end_src
+
+** Golang
+   #+begin_src emacs-lisp
+   #+end_src
+
+** Haskell
+   #+begin_src emacs-lisp
+   (use-package lsp-haskell
+       :ensure t
+       :config
+       (setq lsp-haskell-process-path-hie "ghcide"
+             lsp-haskell-process-args-hie '()))
+   #+end_src
+
+** LaTeX
+   #+begin_src emacs-lisp
+   #+end_src
