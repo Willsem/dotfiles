@@ -4,7 +4,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lervag/vimtex'
 Plug 'sirver/ultisnips', { 'for': 'tex' }
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-dadbod'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
@@ -20,8 +20,11 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/telescope.nvim'
 Plug 'nvim-lua/completion-nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'ghifarit53/tokyonight-vim'
 Plug 'Yggdroot/indentLine'
+Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
+Plug 'omnisharp/omnisharp-roslyn'
+Plug 'tikhomirov/vim-glsl'
+Plug 'drewtempelmeyer/palenight.vim'
 call plug#end()
 
 set autoindent                  " Сохранение отступа при переносе
@@ -74,28 +77,17 @@ let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ' '
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ' '
-
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ' '
-let g:airline#extensions#tabline#right_sep = ''
-let g:airline#extensions#tabline#right_alt_sep = ' '
-
 " VimTex
 let g:tex_flavor='latex'
 let g:vimtex_view_method='skim'
 let g:vimtex_quickfix_mode=0
-set conceallevel=0
+let g:vimtex_compiler_progname = 'nvr'
 let g:tex_conceal=""
+set conceallevel=0
 
-" Invsible characters
-set list
-set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»
-highlight NonText guifg=#333333
-highlight SpecialKey guifg=#333333 guibg=#ff0000
+" LaTeX live preview
+" let g:livepreview_previewer = 'skim'
+" let g:livepreview_engine = 'pdflatex'
 
 " TagBar
 nmap <F8> :TagbarToggle<CR>
@@ -103,7 +95,6 @@ nmap <F8> :TagbarToggle<CR>
 " Snips
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsSnippetDirectories = ["."]
 
 " Indents for C++
@@ -151,26 +142,22 @@ let g:indentLine_setColors = 1
 "Rainbow
 let g:rainbow_active = 1
 
-" OmniSharp
-let g:OmniSharp_server_stdio = 1
-let g:OmniSharp_server_use_mono = 1
-let g:OmniSharp_highlight_types = 3
-let g:OmniSharp_server_stdio_quickload = 1
-let g:OmniSharp_proc_debug = 1
-let g:OmniSharp_loglevel = 'debug'
-
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
 endif
 
-let g:tokyonight_style = 'storm'
-let g:tokyonight_enable_italic = 1
-
-let g:lightline = {'colorscheme' : 'tokyonight'}
-colorscheme tokyonight
+set background=dark
+let g:airline_theme = "palenight"
+colorscheme palenight
 hi EndOfBuffer guifg = bg
+
+" Invsible characters
+set list
+set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»
+highlight NonText guifg=#333333
+highlight SpecialKey guifg=#333333 guibg=#ff0000
 
 nnoremap <c-p> :lua require'telescope.builtin'.find_files{}<CR>
 
@@ -180,17 +167,16 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 
-lua <<EOF
-local nvim_lsp = require 'nvim_lsp'
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_gopls_enabled = 1
+let g:go_def_mapping_enabled = 0
 
-nvim_lsp.ccls.setup {
-    filetypes = { "c", "cc", "cpp" },
-    on_attach = require'completion'.on_attach,
-    init_options = {
-        highlight = {
-            lsRanges = true;
-        }
-    }
+lua <<EOF
+local nvim_lsp = require 'lspconfig'
+
+nvim_lsp.clangd.setup {
+    on_attach = require'completion'.on_attach
 }
 
 nvim_lsp.cmake.setup {
@@ -206,6 +192,28 @@ nvim_lsp.texlab.setup {
 }
 
 nvim_lsp.omnisharp.setup {
+    filetypes = { "cs", "fs" },
+    on_attach = require'completion'.on_attach
+}
+
+nvim_lsp.ghcide.setup {
+    on_attach = require'completion'.on_attach
+}
+
+nvim_lsp.gopls.setup {
+    cmd = {"gopls", "serve"},
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+        },
+    },
+    on_attach = require'completion'.on_attach
+}
+
+nvim_lsp.tsserver.setup{
     on_attach = require'completion'.on_attach
 }
 
