@@ -1,6 +1,7 @@
 call plug#begin()
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lervag/vimtex'
 Plug 'sirver/ultisnips', { 'for': 'tex' }
@@ -25,6 +26,9 @@ Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 Plug 'omnisharp/omnisharp-roslyn'
 Plug 'tikhomirov/vim-glsl'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'halkn/lightline-lsp'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
 call plug#end()
 
 set autoindent                  " Сохранение отступа при переносе
@@ -62,20 +66,39 @@ if has("autocmd")
 endif
 
 " Airline
-let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'default'
+"let g:airline_powerline_fonts=1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#formatter = 'default'
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_splits = 0
-let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#show_tab_nr = 0
-let g:airline#extensions#tabline#show_tab_type = 0
-let g:airline#extensions#tabline#show_close_button = 0
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#show_buffers = 0
+"let g:airline#extensions#tabline#show_splits = 0
+"let g:airline#extensions#tabline#show_tabs = 1
+"let g:airline#extensions#tabline#show_tab_nr = 0
+"let g:airline#extensions#tabline#show_tab_type = 0
+"let g:airline#extensions#tabline#show_close_button = 0
 
-let g:airline#extensions#bufferline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
+"let g:airline#extensions#bufferline#enabled = 1
+"let g:airline#extensions#tagbar#enabled = 1
+"Lightline
+let g:lightline = {
+\ 'colorscheme': 'palenight',
+\ 'active': {
+\   'right': [ [ 'lsp_errors', 'lsp_warnings', 'lsp_ok', 'lineinfo' ],
+\              [ 'percent' ],
+\              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+\ },
+\ 'component_expand': {
+\   'lsp_warnings': 'lightline_lsp#warnings',
+\   'lsp_errors':   'lightline_lsp#errors',
+\   'lsp_ok':       'lightline_lsp#ok',
+\ },
+\ 'component_type': {
+\   'lsp_warnings': 'warning',
+\   'lsp_errors':   'error',
+\   'lsp_ok':       'middle',
+\ },
+\ }
 
 " VimTex
 let g:tex_flavor='latex'
