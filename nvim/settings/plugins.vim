@@ -21,9 +21,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'Yggdroot/indentLine'
 Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 Plug 'omnisharp/omnisharp-roslyn'
-Plug 'tikhomirov/vim-glsl'
 Plug 'drewtempelmeyer/palenight.vim'
-Plug 'halkn/lightline-lsp'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 call plug#end()

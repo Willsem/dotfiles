@@ -54,6 +54,10 @@ nvim_lsp.tsserver.setup{
     on_attach = require'completion'.on_attach
 }
 
+nvim_lsp.vimls.setup{
+    on_attach = require'completion'.on_attach
+}
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     -- Enable underline, use default values
@@ -61,7 +65,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     -- Enable virtual text, override spacing to 4
     virtual_text = {
       spacing = 4,
-      prefix = '',
+      prefix = '',
     },
     -- Use a function to dynamically turn signs off
     -- and on, using buffer local variables
