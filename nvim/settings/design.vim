@@ -4,10 +4,8 @@ if exists('+termguicolors')
     set termguicolors
 endif
 
-set background=dark
-let g:palenight_terminal_italics=1
-colorscheme palenight
+colorscheme spaceduck
 hi EndOfBuffer guifg = bg
 
-set list
-set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»
+" set list
+" set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»

@@ -24,4 +24,5 @@ Plug 'omnisharp/omnisharp-roslyn'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 call plug#end()
