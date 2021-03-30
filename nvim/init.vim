@@ -7,7 +7,8 @@ source ~/.config/nvim/settings/cpp_classes_indent.vim
 
 " Design of neovim
 source ~/.config/nvim/settings/design.vim
-source ~/.config/nvim/settings/lightline.vim
+" source ~/.config/nvim/settings/lightline.vim
+source ~/.config/nvim/settings/lualine.vim
 source ~/.config/nvim/settings/indent_line.vim
 
 " LaTeX
