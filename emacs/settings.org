@@ -122,7 +122,8 @@
 
 ** Set font
     #+begin_src emacs-lisp
-    (set-frame-font "JetBrainsMono Nerd Font 15" nil t)
+    ;; (set-frame-font "JetBrainsMono Nerd Font 15" nil t)
+    (set-frame-font "Cascadia Code PL 15" nil t)
     #+end_src
 
 ** Enagle ligatures
@@ -182,7 +183,7 @@
         (add-hook 'org-mode-hook (lambda() (org-bullets-mode 1))))
     #+end_src
 
-*** Org settings 
+*** Org settings
     #+begin_src emacs-lisp
     (setq org-support-shift-select t)
     #+end_src
@@ -230,9 +231,7 @@
     #+begin_src emacs-lisp
     (use-package lsp-mode
         :ensure t
-        :commands lsp
-        :hook
-        (haskell-mode . lsp))
+        :commands lsp)
     (use-package lsp-ui
         :ensure t
         :commands lsp-ui-mode)
@@ -253,7 +252,7 @@
    (use-package ccls
        :ensure t
        :config
-       (setq ccls-executable "clangd")
+           (setq ccls-executable "ccls")
        :hook ((c-mode c++-mode objc-mode) .
            (lambda () (require 'ccls) (lsp))))
    #+end_src
@@ -264,10 +263,6 @@
 
 ** Python
    #+begin_src emacs-lisp
-   ;;(lsp-define-stdio-client lsp-python "python"
-   ;;                          #'projectile-project-root
-   ;;                          '("pyls"))
-   ;;(add-hook 'python-mode-hook 'lsp-python-enable)
    #+end_src
 
 ** C#
@@ -280,13 +275,9 @@
 
 ** Haskell
    #+begin_src emacs-lisp
-   (use-package lsp-haskell
-       :ensure t
-       :config
-       (setq lsp-haskell-process-path-hie "ghcide"
-             lsp-haskell-process-args-hie '()))
    #+end_src
 
 ** LaTeX
    #+begin_src emacs-lisp
+   (package-install 'auctex)
    #+end_src
