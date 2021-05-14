@@ -7,7 +7,7 @@
       \},
       \'sections' : {
       \  'lualine_a' : [ ['mode', {'upper': v:true,},], ],
-      \  'lualine_b' : [ ['branch', {'icon': '',}, ], ],
+      \  'lualine_b' : [ ['branch', {'icon': '',}, ], ],
       \  'lualine_c' : [ ['filename', {'file_status': v:true,},], ],
       \  'lualine_x' : [ 'encoding', 'fileformat', 'filetype' ],
       \  'lualine_y' : [ 'progress' ],

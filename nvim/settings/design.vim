@@ -5,7 +5,7 @@ if exists('+termguicolors')
 endif
 
 colorscheme spaceduck
-hi EndOfBuffer guifg = bg
+hi EndOfBuffer guifg=bg
 
 " set list
 " set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»

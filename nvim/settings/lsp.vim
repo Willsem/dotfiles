@@ -6,7 +6,7 @@ set shortmess+=c
 
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
-let g:go_gopls_enabled = 1
+let g:go_gopls_enabled = 0
 let g:go_def_mapping_enabled = 0
 
 lua <<EOF

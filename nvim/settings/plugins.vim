@@ -26,4 +26,5 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 Plug 'hoob3rt/lualine.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
