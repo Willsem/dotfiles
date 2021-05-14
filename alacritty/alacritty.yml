@@ -20,10 +20,21 @@ font:
   use_thin_strokes: true
 
   normal:
-    #family: MesloLGS Nerd Font
-    family: Iosevka Nerd Font
+    family: MesloLGS Nerd Font
 
-  size: 16.0
+  italic:
+    family: MesloLGS Nerd Font
+    style: Italic
+
+  bold:
+    family: MesloLGS Nerd Font
+    style: Bold
+
+  bold_italic:
+    family: MesloLGS Nerd Font
+    style: Bold Italic
+
+  size: 12.0
 
   offset:
     x: 0
