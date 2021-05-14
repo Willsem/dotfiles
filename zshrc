@@ -16,10 +16,19 @@ alias lt="exa -lahg --tree"
 alias llt="exa -lhg --tree"
 alias size="du -sh * | sort -h"
 
+export EMACS="*term*"
+
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH=$PATH:/Users/alex/go/bin
+export LDFLAGS="-L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"
+
 export CMAKE_PREFIX_PATH=/usr/local/opt/qt5/
 export EDITOR='nvim'
 export VISUAL='nvim'
-export PATH="$PATH:/usr/local/Cellar/llvm/9.0.1/bin"
+export PATH="$PATH:/Users/alex/.dotnet/tools"
+export PATH="$PATH:/Applications/MATLAB_R2021a.app/Contents/MacOS"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
