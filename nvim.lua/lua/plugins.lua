@@ -11,13 +11,29 @@ end
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
 
+    use 'folke/tokyonight.nvim'
+
     use {
-        'pineapplegiant/spaceduck',
-        requires = {'sheerun/vim-polyglot', opt = true}
+        'romgrk/barbar.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
 
     use {
         'hoob3rt/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    }
+
+    use 'neovim/nvim-lspconfig'
+
+    use 'nvim-lua/completion-nvim'
+
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+    }
+
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {'kyazdani42/nvim-web-devicons'}
     }
 end)
