@@ -4,10 +4,11 @@
 
 ## Now using
 
-* Operating system - `MacOS Big Sur (11.0)`
-* Terminal emulator - `Kitty
-* Zsh plugin manager - `oh my zsh`
+* Operating system - `MacOS Big Sur`
+* Font - `JetBrainsMono Nerd Font`
+* Terminal emulator - `Kitty`
+* Shell - `zsh` + `oh my zsh`
 * Text editor - `NeoVim`
-* Vim plugin manager - `vim-plug`
+* Vim plugin manager - `packer`
 * Window manager - `yabai`
 * Hotkey daemon - `skhd`
