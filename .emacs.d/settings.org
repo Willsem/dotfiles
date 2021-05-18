@@ -1,0 +1,283 @@
+* General settings
+
+** Dont'show startup message
+    #+begin_src emacs-lisp
+    (setq inhibit-startup-message t)
+    #+end_src
+
+** Don't show toolbar
+    #+begin_src emacs-lisp
+    (tool-bar-mode -1)
+    #+end_src
+
+** Dont't show menu
+    #+begin_src emacs-lisp
+    (menu-bar-mode -1)
+    #+end_src
+
+** Don't show scrollbar
+    #+begin_src emacs-lisp
+    (scroll-bar-mode -1)
+    #+end_src
+
+** Highlight line
+    #+begin_src emacs-lisp
+    (global-hl-line-mode +1)
+    #+end_src
+
+** Delete selection
+    #+begin_src emacs-lisp
+    (delete-selection-mode 1)
+    #+end_src
+
+** Different backup directory
+    #+begin_src emacs-lisp
+    (setq backup-directory-alist '(("." . "~/.saves")))
+    #+end_src
+
+** Display line numbers when programming
+    #+begin_src emacs-lisp
+    (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+    #+end_src
+
+** Show matching parenthesis
+    #+begin_src emacs-lisp
+    (show-paren-mode 1)
+    #+end_src
+
+** Smooth scrolling
+    #+begin_src emacs-lisp
+    (setq scroll-step 1)
+    (setq scroll-margin 0)
+    (setq scroll-conservatively 100000)
+    #+end_src
+
+** Change default directory
+    #+begin_src emacs-lisp
+    (setq default-directory "~/")
+    #+end_src
+
+** Indent settings
+
+*** Disable tabs
+    #+begin_src emacs-lisp
+    (setq-default indent-tabs-mode nil)
+    #+end_src
+
+*** Indent width
+    #+begin_src emacs-lisp
+    (setq-default tab-width 4)
+    (setq-default c-basic-offset 4)
+    (setq-default standart-indent 4)
+    (setq-default lisp-body-indent 4)
+    #+end_src
+
+*** Make indent when press enter
+    #+begin_src emacs-lisp
+    (global-set-key (kbd "RET") 'newline-and-indent)
+    (setq lisp-indent-function  'common-lisp-indent-function)
+    #+end_src
+
+** Switch off bell
+   #+begin_src emacs-lisp
+   (setq ring-bell-function 'ignore)
+   #+end_src
+
+** Ctrl as cmd
+   #+begin_src emacs-lisp
+   (setq mac-command-modifier 'control)
+   #+end_src
+
+** Option as meta
+   #+begin_src emacs-lisp
+   (setq mac-option-modifier 'meta
+         ns-option-modifier 'meta)
+   (setq mac-right-option-modifier nil)
+   #+end_src
+
+* UI
+
+** Colorscheme
+    #+begin_src emacs-lisp
+    (use-package doom-themes
+        :ensure t
+        :config
+            (setq doom-themes-enable-bold t
+                  doom-themes-enable-italic t)
+            (load-theme 'doom-moonlight t))
+    #+end_src
+
+** Modeline
+    #+begin_src emacs-lisp
+    (use-package doom-modeline
+        :ensure t
+        :init (doom-modeline-mode 1))
+    #+end_src
+
+** All the icons
+    #+begin_src emacs-lisp
+    (use-package all-the-icons
+        :ensure t)
+    #+end_src
+
+** Set font
+    #+begin_src emacs-lisp
+    ;; (set-frame-font "JetBrainsMono Nerd Font 15" nil t)
+    (set-frame-font "Cascadia Code PL 15" nil t)
+    #+end_src
+
+** Enagle ligatures
+    #+begin_src emacs-lisp
+    (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
+                   (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
+                   (36 . ".\\(?:>\\)")
+                   (37 . ".\\(?:\\(?:%%\\)\\|%\\)")
+                   (38 . ".\\(?:\\(?:&&\\)\\|&\\)")
+                   (42 . ".\\(?:\\(?:\\*\\*/\\)\\|\\(?:\\*[*/]\\)\\|[*/>]\\)")
+                   (43 . ".\\(?:\\(?:\\+\\+\\)\\|[+>]\\)")
+                   (45 . ".\\(?:\\(?:-[>-]\\|<<\\|>>\\)\\|[<>}~-]\\)")
+                   (46 . ".\\(?:\\(?:\\.[.<]\\)\\|[.=-]\\)")
+                   (47 . ".\\(?:\\(?:\\*\\*\\|//\\|==\\)\\|[*/=>]\\)")
+                   (48 . ".\\(?:x[a-zA-Z]\\)")
+                   (58 . ".\\(?:::\\|[:=]\\)")
+                   (59 . ".\\(?:;;\\|;\\)")
+                   (60 . ".\\(?:\\(?:!--\\)\\|\\(?:~~\\|->\\|\\$>\\|\\*>\\|\\+>\\|--\\|<[<=-]\\|=[<=>]\\||>\\)\\|[*$+~/<=>|-]\\)")
+                   (61 . ".\\(?:\\(?:/=\\|:=\\|<<\\|=[=>]\\|>>\\)\\|[<=>~]\\)")
+                   (62 . ".\\(?:\\(?:=>\\|>[=>-]\\)\\|[=>-]\\)")
+                   (63 . ".\\(?:\\(\\?\\?\\)\\|[:=?]\\)")
+                   (91 . ".\\(?:]\\)")
+                   (92 . ".\\(?:\\(?:\\\\\\\\\\)\\|\\\\\\)")
+                   (94 . ".\\(?:=\\)")
+                   (119 . ".\\(?:ww\\)")
+                   (123 . ".\\(?:-\\)")
+                   (124 . ".\\(?:\\(?:|[=|]\\)\\|[=>|]\\)")
+                   (126 . ".\\(?:~>\\|~~\\|[>=@~-]\\)"))))
+    (dolist (char-regexp alist)
+        (set-char-table-range composition-function-table (car char-regexp)
+                            `([,(cdr char-regexp) 0 font-shape-gstring]))))
+    #+end_src
+
+** Centaur tabs
+    #+begin_src emacs-lisp
+    (use-package centaur-tabs
+        :ensure t
+        :config
+        (setq centaur-tabs-height 32
+              centaur-tabs-style "bar"
+              centaur-tabs-set-icons t
+              centaur-tabs-set-bar 'under
+              x-underline-at-descent-line t
+              centaur-tabs-set-modified-marker t
+              centaur-tabs-modified-marker "●"
+              centaur-tabs-enable-key-bindings t)
+              (centaur-tabs-mode t))
+    #+end_src
+
+** Org mode
+
+*** Org bullets
+    #+begin_src emacs-lisp
+    (use-package org-bullets
+        :ensure t
+        :config
+        (add-hook 'org-mode-hook (lambda() (org-bullets-mode 1))))
+    #+end_src
+
+*** Org settings
+    #+begin_src emacs-lisp
+    (setq org-support-shift-select t)
+    #+end_src
+
+** Highlight indent
+   #+begin_src emacs-lisp
+   (use-package highlight-indent-guides
+       :ensure t
+       :config
+       (setq highlight-indent-guides-method 'character)
+       (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
+   #+end_src
+
+* General Packages
+
+** Dashboard
+    #+begin_src emacs-lisp
+    (use-package dashboard
+        :ensure t
+        :config
+        (dashboard-setup-startup-hook))
+    #+end_src
+
+** Treemacs
+    #+begin_src emacs-lisp
+    (use-package treemacs
+        :ensure t
+        :bind
+        (:map global-map ([f8] . treemacs))
+        :config
+            (setq treemacs-is-never-other-window t))
+    #+end_src
+** Projectile
+   #+begin_src emacs-lisp
+   (use-package projectile
+       :ensure t
+       :config
+       (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
+       (projectile-mode +1))
+   #+end_src
+
+* Language support
+
+** Lsp
+    #+begin_src emacs-lisp
+    (use-package lsp-mode
+        :ensure t
+        :commands lsp)
+    (use-package lsp-ui
+        :ensure t
+        :commands lsp-ui-mode)
+    (setq lsp-ui-doc-enable nil)
+    (use-package company-lsp
+        :ensure t
+        :commands company-lsp)
+    (use-package flycheck
+        :ensure t
+        :init
+        (global-flycheck-mode t))
+    (use-package yasnippet
+        :ensure t)
+    #+end_src
+
+** C++
+   #+begin_src emacs-lisp
+   (use-package ccls
+       :ensure t
+       :config
+           (setq ccls-executable "ccls")
+       :hook ((c-mode c++-mode objc-mode) .
+           (lambda () (require 'ccls) (lsp))))
+   #+end_src
+
+** CMake
+   #+begin_src emacs-lisp
+   #+end_src
+
+** Python
+   #+begin_src emacs-lisp
+   #+end_src
+
+** C#
+   #+begin_src emacs-lisp
+   #+end_src
+
+** Golang
+   #+begin_src emacs-lisp
+   #+end_src
+
+** Haskell
+   #+begin_src emacs-lisp
+   #+end_src
+
+** LaTeX
+   #+begin_src emacs-lisp
+   (package-install 'auctex)
+   #+end_src
