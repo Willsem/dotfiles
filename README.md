@@ -2,6 +2,8 @@
     <code>.dotfiles</code>
 </h1>
 
+![example](img/example.png)
+
 ### Now using
 
 * Operating system - `MacOS Big Sur`
