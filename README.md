@@ -1,8 +1,8 @@
-# Config files
+<h1 align="center">
+    <code>.dotfiles</code>
+</h1>
 
-![example](img/example.png)
-
-## Now using
+### Now using
 
 * Operating system - `MacOS Big Sur`
 * Font - `JetBrainsMono Nerd Font`
