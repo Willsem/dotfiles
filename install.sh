@@ -1,9 +1,17 @@
 #!/bin/sh
 
-ln -nfs ~/.config/nvim ./.config/nvim
-ln -nfs ~/.config/alacritty ./.config/alacritty
-ln -nfs ~/.config/kitty ./.config/kitty
-ln -nfs ~/.emacs.d ./.emacs.d
-ln -nfs ~/.yabairc ./.yabairc
-ln -nfs ~/.skhdrc ./.skhdrc
-ln -nfs ~/.zshrc ./.zshrc
+rm -rf ~/.config/nvim
+rm -rf ~/.config/alacritty
+rm -rf ~/.config/kitty
+rm -rf ~/.emacs.d
+rm -rf ~/.yabairc
+rm -rf ~/.skhdrc
+rm -rf ~/.zshrc
+
+cp -rf ./.config/nvim ~/.config/nvim
+cp -rf ./.config/alacritty ~/.config/alacritty
+cp -rf ./.config/kitty ~/.config/kitty
+cp -rf ./.emacs.d ~/.emacs.d
+cp -rf ./.yabairc ~/.yabairc
+cp -rf ./.skhdrc ~/.skhdrc
+cp -rf ./.zshrc ~/.zshrc
