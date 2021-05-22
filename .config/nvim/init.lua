@@ -12,3 +12,5 @@ require('indentline_settings')
 
 require('listchars')
 require('colorscheme')
+
+require('gitsigns_settings')
