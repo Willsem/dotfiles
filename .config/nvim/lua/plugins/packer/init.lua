@@ -29,7 +29,7 @@ return require('packer').startup(function()
     use {
         'glepnir/galaxyline.nvim',
         branch = 'main',
-        config = function() require'statusline' end,
+        config = function() require'plugins/galaxyline' end,
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
 
@@ -55,4 +55,6 @@ return require('packer').startup(function()
         'lewis6991/gitsigns.nvim',
         requires = {'nvim-lua/plenary.nvim'}
     }
+
+    use 'editorconfig/editorconfig-vim'
 end)
