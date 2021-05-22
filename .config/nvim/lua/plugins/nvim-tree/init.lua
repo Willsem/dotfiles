@@ -1,3 +1,10 @@
+--[[
+              __                  __
+.-----.--.--.|__|.--------.______|  |_.----.-----.-----.
+|     |  |  ||  ||        |______|   _|   _|  -__|  -__|
+|__|__|\___/ |__||__|__|__|      |____|__| |_____|_____|
+--]]
+
 vim.g.nvim_tree_ignore = { '.git', 'node_modules', '.cache', 'bin', 'obj' }
 vim.g.nvim_tree_auto_ignore_ft = { 'startify', 'dashboard' }
 vim.g.nvim_tree_indent_markers = 1

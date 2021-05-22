@@ -1,16 +1,9 @@
+--[[
+ __         __ __      __              
+|__|.-----.|__|  |_   |  |.--.--.---.-.
+|  ||     ||  |   _|__|  ||  |  |  _  |
+|__||__|__||__|____|__|__||_____|___._|
+--]]
+
 require('plugins')
-
-require('vim_settings')
-
--- require('lualine_settings')
-require('lsp_config')
-
-require('telescope_settings')
-require('nvimtree_settings')
-
-require('indentline_settings')
-
-require('listchars')
-require('colorscheme')
-
-require('gitsigns_settings')
+require('config')
