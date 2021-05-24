@@ -57,4 +57,6 @@ return require('packer').startup(function()
     }
 
     use 'editorconfig/editorconfig-vim'
+
+    use 'norcalli/nvim-colorizer.lua'
 end)
