@@ -5,10 +5,11 @@
 |__|__|\___/ |__||__|__|__|      |____|__| |_____|_____|
 --]]
 
-vim.g.nvim_tree_ignore = { '.git', 'node_modules', '.cache', 'bin', 'obj' }
+vim.g.nvim_tree_ignore = { '.git', 'node_modules', '.cache', 'bin', 'obj', '.DS_Store' }
 vim.g.nvim_tree_auto_ignore_ft = { 'startify', 'dashboard' }
 vim.g.nvim_tree_indent_markers = 1
 
+--[[
 vim.g.nvim_tree_icons = {
     ['default'] = '',
     ['symlink'] = '',
@@ -39,6 +40,7 @@ vim.g.nvim_tree_icons = {
         ['error'] = ''
     }
 }
+--]]
 
 vim.cmd[[
 nnoremap <C-n> :NvimTreeToggle<CR>

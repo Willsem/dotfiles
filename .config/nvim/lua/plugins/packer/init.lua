@@ -57,4 +57,11 @@ return require('packer').startup(function()
     }
 
     use 'editorconfig/editorconfig-vim'
+
+    use {'lervag/vimtex', config=[[require('plugins/vimtex')]]}
+
+    use {
+        'yamatsum/nvim-nonicons',
+        requires = {'kyazdani42/nvim-web-devicons'}
+    }
 end)
