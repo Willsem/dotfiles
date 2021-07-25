@@ -10,11 +10,15 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
-alias l="exa -lahgG"
-alias ll="exa -lhgG"
-alias lt="exa -lahg --tree"
-alias llt="exa -lhg --tree"
+alias l="exa -lahg --icons"
+alias ll="exa -lhg --icons"
+alias lt="exa -lahg --tree --icons"
+alias llt="exa -lhg --tree --icons"
 alias size="du -sh * | sort -h"
+
+alias n="nvim"
+alias vi="nvim"
+alias vim="nvim"
 
 export EMACS="*term*"
 
@@ -28,7 +32,7 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export PATH="$PATH:/Users/alex/.dotnet/tools"
 export PATH="$PATH:/Applications/MATLAB_R2021a.app/Contents/MacOS"
+export PATH="$PATH:/Users/alex/.local/bin"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
