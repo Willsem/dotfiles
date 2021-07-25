@@ -24,7 +24,7 @@ gls.left[2] = {
                           rm = colors.cyan, ['r?'] = colors.cyan,
                           ['!']  = colors.red,t = colors.red}
       vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color[vim.fn.mode()])
-      return '  '
+      return ' '
     end,
     highlight = {colors.red,colors.bg,'bold'},
   },
@@ -138,7 +138,7 @@ gls.right[2] = {
 
 gls.right[3] = {
   GitIcon = {
-    provider = function() return '  ' end,
+    provider = function() return '' end,
     condition = condition.check_git_workspace,
     separator = ' ',
     separator_highlight = {'NONE',colors.bg},
@@ -148,6 +148,7 @@ gls.right[3] = {
 
 gls.right[4] = {
   GitBranch = {
+    separator = ' ',
     provider = 'GitBranch',
     condition = condition.check_git_workspace,
     highlight = {colors.violet,colors.bg,'bold'},
@@ -156,32 +157,35 @@ gls.right[4] = {
 
 gls.right[5] = {
   DiffAdd = {
+    separator = ' ',
     provider = 'DiffAdd',
     condition = condition.hide_in_width,
-    icon = '  ',
+    icon = ' ',
     highlight = {colors.green,colors.bg},
   }
 }
 gls.right[6] = {
   DiffModified = {
+    separator = ' ',
     provider = 'DiffModified',
     condition = condition.hide_in_width,
-    icon = ' 柳',
+    icon = '柳',
     highlight = {colors.orange,colors.bg},
   }
 }
 gls.right[7] = {
   DiffRemove = {
+    separator = ' ',
     provider = 'DiffRemove',
     condition = condition.hide_in_width,
-    icon = '  ',
+    icon = '',
     highlight = {colors.red,colors.bg},
   }
 }
 
 gls.right[8] = {
   RainbowBlue = {
-    provider = function() return '  ▊' end,
+    provider = function() return '▊' end,
     highlight = {colors.blue,colors.bg}
   },
 }

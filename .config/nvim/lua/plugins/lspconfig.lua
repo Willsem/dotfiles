@@ -9,7 +9,7 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 ]]
 
-lspconfig.ccls.setup {
+lspconfig.clangd.setup {
     on_attach = completion.on_attach
 }
 
@@ -20,3 +20,11 @@ lspconfig.gopls.setup {
 lspconfig.pyls.setup {
     on_attach = completion.on_attach
 }
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = {
+      prefix = '',
+    },
+  }
+)

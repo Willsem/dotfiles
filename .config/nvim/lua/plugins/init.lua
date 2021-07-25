@@ -15,11 +15,6 @@ return require('packer').startup(function()
     use 'folke/tokyonight.nvim'
 
     use {
-        'yamatsum/nvim-nonicons',
-        requires = 'kyazdani42/nvim-web-devicons'
-    }
-
-    use {
         'akinsho/nvim-bufferline.lua',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function() require('plugins/bufferline') end
@@ -47,6 +42,8 @@ return require('packer').startup(function()
     use 'nvim-lua/completion-nvim'
 
     use 'fatih/vim-go'
+
+    use 'nvim-treesitter/nvim-treesitter'
 
     -- Git
     use {
