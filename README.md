@@ -7,8 +7,8 @@
 ### Now using
 
 * Operating system - `MacOS Big Sur`
-* Font - `JetBrainsMono Nerd Font`
-* Terminal emulator - `Kitty`
+* Font - `CaskaydiaCove Nerd Font`
+* Terminal emulator - `iTerm2`
 * Shell - `zsh` + `oh my zsh`
 * Text editor - `NeoVim`
 * Vim plugin manager - `packer`
