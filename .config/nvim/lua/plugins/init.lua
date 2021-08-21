@@ -43,7 +43,10 @@ return require('packer').startup(function()
 
     use 'fatih/vim-go'
 
-    use 'nvim-treesitter/nvim-treesitter'
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        config = function() require('plugins/treesitter') end
+    }
 
     -- Git
     use {
@@ -55,8 +58,6 @@ return require('packer').startup(function()
     use 'f-person/git-blame.nvim'
 
     -- Utils
-    use 'yamatsum/nvim-cursorline'
-
     use 'editorconfig/editorconfig-vim'
 
     use {
