@@ -11,5 +11,5 @@ if exists('+termguicolors')
     hi LineNr ctermbg=NONE guibg=NONE
 endif
 
-colorscheme tokyonight
+colorscheme onedark
 ]]

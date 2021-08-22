@@ -10,9 +10,10 @@ end
 
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
+    use 'projekt0n/github-nvim-theme'
 
     -- Design
-    use 'folke/tokyonight.nvim'
+    use 'navarasu/onedark.nvim'
 
     use {
         'akinsho/nvim-bufferline.lua',
@@ -21,11 +22,16 @@ return require('packer').startup(function()
     }
 
     use {
+        'ojroques/nvim-hardline',
+        config = function() require('plugins/hardline') end
+    }
+
+    --[[use {
         'glepnir/galaxyline.nvim',
         branch = 'main',
         config = function() require('plugins/galaxyline') end,
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    }
+    }--]]
 
     use {
         'kyazdani42/nvim-tree.lua',
