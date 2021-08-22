@@ -7,7 +7,7 @@
 ### Now using
 
 * Operating system - `MacOS Big Sur`
-* Font - `CaskaydiaCove Nerd Font`
+* Font - `Iosevka Nerd Font`
 * Terminal emulator - `iTerm2`
 * Shell - `zsh` + `oh my zsh`
 * Text editor - `NeoVim`
