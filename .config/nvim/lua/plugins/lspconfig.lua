@@ -21,10 +21,14 @@ lspconfig.pyls.setup {
     on_attach = completion.on_attach
 }
 
+lspconfig.cmake.setup {
+    on_attach = completion.on_attach
+}
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = {
-      prefix = '',
+      prefix = ' ',
     },
   }
 )

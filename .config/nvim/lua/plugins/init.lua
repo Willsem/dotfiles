@@ -63,6 +63,11 @@ return require('packer').startup(function()
 
     use 'f-person/git-blame.nvim'
 
+    use {
+        'kdheepak/lazygit.nvim',
+        config = function() require('plugins/lazygit') end
+    }
+
     -- Utils
     use 'editorconfig/editorconfig-vim'
 
@@ -70,6 +75,11 @@ return require('packer').startup(function()
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
         config = function() require('plugins/telescope') end
+    }
+
+    use {
+        'glepnir/dashboard-nvim',
+        config = function() require('plugins/dashboard') end
     }
 end)
 
