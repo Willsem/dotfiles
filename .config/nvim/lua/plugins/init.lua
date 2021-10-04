@@ -10,76 +10,25 @@ end
 
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
-    use 'projekt0n/github-nvim-theme'
 
-    -- Design
-    use 'navarasu/onedark.nvim'
+    use 'folke/tokyonight.nvim'
 
-    use {
-        'akinsho/nvim-bufferline.lua',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function() require('plugins/bufferline') end
-    }
-
-    use {
-        'ojroques/nvim-hardline',
-        config = function() require('plugins/hardline') end
-    }
-
-    --[[use {
-        'glepnir/galaxyline.nvim',
-        branch = 'main',
-        config = function() require('plugins/galaxyline') end,
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    }--]]
-
-    use {
-        'kyazdani42/nvim-tree.lua',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function() require('plugins/nvim-tree') end
-    }
-
-    -- LSP
     use {
         'neovim/nvim-lspconfig',
         config = function() require('plugins/lspconfig') end
     }
 
-    use 'nvim-lua/completion-nvim'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-vsnip'
+    use 'hrsh7th/vim-vsnip'
 
     use 'fatih/vim-go'
 
     use {
         'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
         config = function() require('plugins/treesitter') end
     }
-
-    -- Git
-    use {
-        'lewis6991/gitsigns.nvim',
-        requires = 'nvim-lua/plenary.nvim',
-        config = function() require('plugins/gitsigns') end
-    }
-
-    use 'f-person/git-blame.nvim'
-
-    use {
-        'kdheepak/lazygit.nvim',
-        config = function() require('plugins/lazygit') end
-    }
-
-    -- Utils
-    use 'editorconfig/editorconfig-vim'
-
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
-        config = function() require('plugins/telescope') end
-    }
-
-    use {
-        'glepnir/dashboard-nvim',
-        config = function() require('plugins/dashboard') end
-    }
 end)
-

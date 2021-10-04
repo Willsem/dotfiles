@@ -1,2 +1,2 @@
 require('plugins')
-require('default')
+require('vim')

@@ -1,34 +1,31 @@
-local lspconfig = require('lspconfig');
-local completion = require('completion');
+local nvim_lsp = require('lspconfig')
 
-vim.cmd[[
-autocmd BufEnter * lua require'completion'.on_attach()
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-set completeopt=menuone,noinsert,noselect
-set shortmess+=c
-]]
+local cmp = require'cmp'
 
-lspconfig.clangd.setup {
-    on_attach = completion.on_attach
-}
-
-lspconfig.gopls.setup {
-    on_attach = completion.on_attach
-}
-
-lspconfig.pyls.setup {
-    on_attach = completion.on_attach
-}
-
-lspconfig.cmake.setup {
-    on_attach = completion.on_attach
-}
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-      prefix = ' ',
+cmp.setup({
+    snippet = {
+        expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` user.
+        end,
     },
-  }
-)
+    mapping = {
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.close(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    },
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'vsnip' },
+        { name = 'buffer' },
+    }
+})
+
+local servers = {'clangd', 'gopls', 'cmake', 'pyright'}
+
+for _, lsp in ipairs(servers) do
+    nvim_lsp[lsp].setup{
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    }
+end

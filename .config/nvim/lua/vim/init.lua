@@ -1,11 +1,3 @@
---[[
-        __                               __   __   __
-.--.--.|__|.--------.______.-----.-----.|  |_|  |_|__|.-----.-----.-----.
-|  |  ||  ||        |______|__ --|  -__||   _|   _|  ||     |  _  |__ --|
- \___/ |__||__|__|__|      |_____|_____||____|____|__||__|__|___  |_____|
-                                                            |_____|
---]]
-
 vim.cmd[[
 set autoindent                  " Сохранение отступа при переносе
 set expandtab                   " Перевод таба в пробелы
@@ -32,4 +24,12 @@ set linebreak " Перенос по пробелу
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
+
+set list
+set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»
+
+set colorcolumn=79
+set showtabline=2
 ]]
+
+require('vim/colors')
