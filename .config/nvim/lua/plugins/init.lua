@@ -21,7 +21,7 @@ return require('packer').startup(function()
             'hrsh7th/nvim-cmp',
             'hrsh7th/cmp-vsnip',
             'hrsh7th/vim-vsnip',
-            'fatih/vim-go',
+            'ray-x/go.nvim',
         },
         config = function() require('plugins/lspconfig') end
     }
