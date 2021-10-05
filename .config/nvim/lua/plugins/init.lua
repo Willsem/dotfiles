@@ -51,6 +51,12 @@ return require('packer').startup(function()
 
     use {
         'f-person/git-blame.nvim',
-        config = function() require('plugins/git_blame') end
+        config = function() require('plugins/git-blame') end
+    }
+
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function() require('plugins/nvim-tree') end
     }
 end)
