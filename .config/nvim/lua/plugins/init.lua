@@ -15,20 +15,42 @@ return require('packer').startup(function()
 
     use {
         'neovim/nvim-lspconfig',
+        requires = {
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/nvim-cmp',
+            'hrsh7th/cmp-vsnip',
+            'hrsh7th/vim-vsnip',
+            'fatih/vim-go',
+        },
         config = function() require('plugins/lspconfig') end
     }
-
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-vsnip'
-    use 'hrsh7th/vim-vsnip'
-
-    use 'fatih/vim-go'
 
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         config = function() require('plugins/treesitter') end
+    }
+
+    use {
+        'noib3/cokeline.nvim',
+        requires='kyazdani42/nvim-web-devicons',
+        config = function() require('plugins/cokeline') end
+    }
+
+    use {
+        'famiu/feline.nvim',
+        config = function() require('plugins/feline') end
+    }
+
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires ='nvim-lua/plenary.nvim',
+        config = function() require('gitsigns').setup() end
+    }
+
+    use {
+        'f-person/git-blame.nvim',
+        config = function() require('plugins/git_blame') end
     }
 end)

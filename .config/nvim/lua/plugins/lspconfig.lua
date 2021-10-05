@@ -5,7 +5,7 @@ local cmp = require'cmp'
 cmp.setup({
     snippet = {
         expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` user.
+        vim.fn["vsnip#anonymous"](args.body)
         end,
     },
     mapping = {
@@ -29,3 +29,11 @@ for _, lsp in ipairs(servers) do
         capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
     }
 end
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = {
+      prefix = 'ﱢ',
+    },
+  }
+)
