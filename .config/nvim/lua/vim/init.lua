@@ -26,7 +26,8 @@ if has("autocmd")
 endif
 
 set list
-set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»
+"set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»
+set listchars=tab:-->,space:·,nbsp:␣,trail:•,precedes:«,extends:»
 
 set colorcolumn=79
 set showtabline=2
