@@ -32,10 +32,10 @@ table.insert(components.active[LEFT], {
         local val = {}
         local color = vi_mode_colors[vi_mode_utils.get_vim_mode()]
 
-        if color == nil then
-            val.bg = vi_mode_utils.get_vim_color()
-        else
+        if color then
             val.bg = color
+        else
+            val.bg = 'red'
         end
 
         val.fg = 'bg'

@@ -59,4 +59,6 @@ return require('packer').startup(function()
         requires = 'kyazdani42/nvim-web-devicons',
         config = function() require('plugins/nvim-tree') end
     }
+
+    use 'lukas-reineke/indent-blankline.nvim'
 end)
