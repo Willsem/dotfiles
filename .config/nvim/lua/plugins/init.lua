@@ -34,7 +34,7 @@ return require('packer').startup(function()
 
     use {
         'noib3/cokeline.nvim',
-        requires='kyazdani42/nvim-web-devicons',
+        requires = 'kyazdani42/nvim-web-devicons',
         config = function() require('plugins/cokeline') end
     }
 
@@ -45,7 +45,7 @@ return require('packer').startup(function()
 
     use {
         'lewis6991/gitsigns.nvim',
-        requires ='nvim-lua/plenary.nvim',
+        requires = 'nvim-lua/plenary.nvim',
         config = function() require('gitsigns').setup() end
     }
 
@@ -61,4 +61,10 @@ return require('packer').startup(function()
     }
 
     use 'lukas-reineke/indent-blankline.nvim'
+
+    use {
+        'NTBBloodbath/rest.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function() require('plugins/rest-nvim') end
+    }
 end)
