@@ -5,19 +5,8 @@ local LEFT = 1
 local MIDDLE = 2
 local RIGHT = 3
 
-local colors = {
-    bg = '#282c34',
-    fg = '#abb2bf',
-    yellow = '#e0af68',
-    cyan = '#56b6c2',
-    darkblue = '#081633',
-    green = '#98c379',
-    orange = '#d19a66',
-    violet = '#a9a1e1',
-    magenta = '#c678dd',
-    blue = '#61afef',
-    red = '#e86671'
-}
+local colors = require("tokyonight.colors").setup({})
+colors.bg = colors.bg_dark
 
 local vi_mode_colors = {
     NORMAL = 'green',
@@ -95,7 +84,7 @@ table.insert(components.active[LEFT], {
     return vim.fn.expand("%:F")
   end,
   hl = {
-    fg = 'fg',
+    fg = 'fg_dark',
     bg = 'bg',
     style = 'bold'
   },
@@ -123,6 +112,105 @@ table.insert(components.active[MIDDLE], {
         style = 'bold'
     },
     right_sep = ' '
+})
+
+table.insert(components.active[MIDDLE], {
+    provider = 'diagnostic_errors',
+    enabled = function()
+        return lsp.diagnostics_exist('Error')
+    end,
+    hl = {
+        fg = colors.red
+    }
+})
+
+table.insert(components.active[MIDDLE], {
+    provider = 'diagnostic_warnings',
+    enabled = function()
+        return lsp.diagnostics_exist('Warning')
+    end,
+    hl = {
+        fg = colors.yellow
+    }
+})
+
+table.insert(components.active[MIDDLE], {
+    provider = 'diagnostic_hints',
+    enabled = function()
+        return lsp.diagnostics_exist('Hint')
+    end,
+    hl = {
+        fg = colors.cyan
+    }
+})
+
+table.insert(components.active[MIDDLE], {
+    provider = 'diagnostic_info',
+    enabled = function()
+        return lsp.diagnostics_exist('Information')
+    end,
+    hl = {
+        fg = colors.blue
+    }
+})
+
+table.insert(components.active[RIGHT], {
+    provider = 'git_branch',
+    icon = ' ',
+    left_sep = ' ',
+    hl = {
+        fg = colors.magenta,
+        style = 'bold'
+    },
+})
+
+table.insert(components.active[RIGHT], {
+    provider = 'git_diff_added',
+    hl = {
+        fg = colors.green
+    }
+})
+
+table.insert(components.active[RIGHT], {
+    provider = 'git_diff_changed',
+    hl = {
+        fg = colors.orange
+    }
+})
+
+table.insert(components.active[RIGHT], {
+    provider = 'git_diff_removed',
+    hl = {
+        fg = colors.red
+    }
+})
+
+table.insert(components.active[RIGHT], {
+  provider = 'position',
+  hl = {
+    fg = 'fg_dark',
+    bg = 'bg',
+    style = 'bold'
+  },
+  right_sep = ' '
+})
+
+table.insert(components.active[RIGHT], {
+  provider = 'line_percentage',
+  hl = {
+    fg = 'fg_dark',
+    bg = 'bg',
+    style = 'bold'
+  },
+  right_sep = ' '
+})
+
+table.insert(components.active[RIGHT], {
+    provider = 'scroll_bar',
+    hl = {
+        fg = colors.blue,
+        style = 'bold'
+    }
 })
 
 require('feline').setup({
