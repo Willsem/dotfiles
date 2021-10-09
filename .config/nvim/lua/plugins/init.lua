@@ -60,7 +60,10 @@ return require('packer').startup(function()
         config = function() require('plugins/nvim-tree') end
     }
 
-    use 'lukas-reineke/indent-blankline.nvim'
+    use {
+        'lukas-reineke/indent-blankline.nvim',
+        config = function() require('plugins/indent-blankline') end
+    }
 
     use {
         'NTBBloodbath/rest.nvim',
