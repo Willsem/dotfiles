@@ -70,4 +70,10 @@ return require('packer').startup(function()
         requires = 'nvim-lua/plenary.nvim',
         config = function() require('plugins/rest-nvim') end
     }
+
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function() require('plugins/telescope') end
+    }
 end)
