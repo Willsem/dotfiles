@@ -22,7 +22,7 @@ cmp.setup({
     }
 })
 
-local servers = {'clangd', 'gopls', 'cmake', 'pyright'}
+local servers = {'clangd', 'gopls', 'cmake', 'pyright', 'tsserver'}
 
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup{
