@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 export ZSH="/Users/alex/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git zsh-syntax-highlighting)
@@ -15,6 +8,8 @@ alias ll="exa -lhg --icons"
 alias lt="exa -lahg --tree --icons"
 alias llt="exa -lhg --tree --icons"
 alias size="du -sh * | sort -h"
+alias lg="lazygit"
+alias ssh_kitty="TERM=xterm-256color && ssh"
 
 alias n="nvim"
 alias vi="nvim"
@@ -22,8 +17,11 @@ alias vim="nvim"
 
 export EMACS="*term*"
 
-export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH=$PATH:/usr/local/opt/llvm/bin
 export PATH=$PATH:/Users/alex/go/bin
+export PATH=$PATH:/usr/local/sbin
+export PATH=$PATH:/usr/local/opt/libpq/bin
+
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
@@ -33,6 +31,26 @@ export VISUAL='nvim'
 export PATH="$PATH:/Users/alex/.dotnet/tools"
 export PATH="$PATH:/Applications/MATLAB_R2021a.app/Contents/MacOS"
 export PATH="$PATH:/Users/alex/.local/bin"
+export GO_PATH=~/go
+export PATH=$PATH:$GO_PATH/bin
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+POWERLEVEL9K_MODE='agnoster'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs)
+
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=''
+POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=''
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=''
+POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=''
+
+POWERLEVEL9K_DIR_FOREGROUND='blue'
+POWERLEVEL9K_DIR_BACKGROUND='none'
+POWERLEVEL9K_VCS_FOREGROUND='green'
+POWERLEVEL9K_VCS_BACKGROUND='none'
+POWERLEVEL9K_STATUS_BACKGROUND='none'
+
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='╭─'
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='╰─%F{magenta}λ '
