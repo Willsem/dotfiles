@@ -21,7 +21,7 @@ return require('packer').startup(function()
             'hrsh7th/nvim-cmp',
             'hrsh7th/cmp-vsnip',
             'hrsh7th/vim-vsnip',
-            'ray-x/go.nvim',
+            'fatih/vim-go',
         },
         config = function() require('plugins/lspconfig') end
     }
@@ -30,12 +30,6 @@ return require('packer').startup(function()
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         config = function() require('plugins/treesitter') end
-    }
-
-    use {
-        'noib3/cokeline.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function() require('plugins/cokeline') end
     }
 
     use {
@@ -76,4 +70,8 @@ return require('packer').startup(function()
         requires = 'nvim-lua/plenary.nvim',
         config = function() require('plugins/telescope') end
     }
+
+    use 'editorconfig/editorconfig-vim'
+
+    use 'cespare/vim-toml'
 end)

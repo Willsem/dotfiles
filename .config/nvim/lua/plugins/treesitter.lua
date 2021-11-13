@@ -8,7 +8,7 @@ parser_configs.http = {
 }
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = {'c', 'cpp', 'go', 'lua', 'python', 'dockerfile', 'http'},
+  ensure_installed = {'c', 'cpp', 'go', 'lua', 'python', 'dockerfile', 'http', 'typescript'},
   highlight = {
     enable = true,
   },

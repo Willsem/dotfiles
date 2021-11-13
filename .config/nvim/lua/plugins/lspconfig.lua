@@ -22,7 +22,7 @@ cmp.setup({
     }
 })
 
-local servers = {'clangd', 'gopls', 'cmake', 'pyright', 'tsserver'}
+local servers = {'clangd', 'gopls', 'cmake', 'pyright', 'tsserver', 'csharp_ls'}
 
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup{
@@ -37,9 +37,3 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     },
   }
 )
-
-require('go').setup()
-vim.cmd[[
-autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
-autocmd BufWritePre *.go :silent! lua require('go.format').goimport()
-]]

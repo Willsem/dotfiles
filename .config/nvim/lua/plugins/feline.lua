@@ -157,7 +157,7 @@ table.insert(components.active[MIDDLE], {
 table.insert(components.active[RIGHT], {
     provider = 'git_branch',
     icon = ' ',
-    left_sep = ' ',
+    right_sep = ' ',
     hl = {
         fg = colors.magenta,
         style = 'bold'
@@ -168,31 +168,34 @@ table.insert(components.active[RIGHT], {
     provider = 'git_diff_added',
     hl = {
         fg = colors.green
-    }
+    },
+    right_sep = ' '
 })
 
 table.insert(components.active[RIGHT], {
     provider = 'git_diff_changed',
     hl = {
         fg = colors.orange
-    }
+    },
+    right_sep = ' '
 })
 
 table.insert(components.active[RIGHT], {
     provider = 'git_diff_removed',
     hl = {
         fg = colors.red
-    }
+    },
+    right_sep = ' '
 })
 
 table.insert(components.active[RIGHT], {
-  provider = 'position',
-  hl = {
-    fg = 'fg_dark',
-    bg = 'bg',
-    style = 'bold'
-  },
-  right_sep = ' '
+    provider = 'position',
+    hl = {
+        fg = 'fg_dark',
+        bg = 'bg',
+        style = 'bold'
+    },
+    right_sep = ' '
 })
 
 table.insert(components.active[RIGHT], {
