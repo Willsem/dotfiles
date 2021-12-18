@@ -7,10 +7,9 @@
 ### Now using
 
 * Operating system - `MacOS Big Sur`
-* Font - `JetBrainsMono Nerd Font`
+* Font - `SF Mono`
 * Terminal emulator - `kitty`
+* Terminal multiplexer - `tmux`
 * Shell - `zsh` + `oh my zsh`
 * Text editor - `NeoVim`
-* Vim plugin manager - `packer`
-* Window manager - `yabai`
-* Hotkey daemon - `skhd`
+* NeoVim plugin manager - `packer`
