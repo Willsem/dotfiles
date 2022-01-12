@@ -5,12 +5,13 @@ local LEFT = 1
 local MIDDLE = 2
 local RIGHT = 3
 
-vim.cmd[[
-let g:gruvbox_material_statusline_style = 'original'
-]]
+local colors = require("gruvbox-baby.colors")
+local config = require("gruvbox-baby.config")
 
-local colors = require("lualine.themes.gruvbox-material")
-colors.bg = colors.bg_dark
+colors.bg = colors.background_dark
+colors.yellow = colors.soft_yellow
+colors.green = colors.soft_green
+colors.blue = colors.light_blue
 
 local vi_mode_colors = {
     NORMAL = 'green',

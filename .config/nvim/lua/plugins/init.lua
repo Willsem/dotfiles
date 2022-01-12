@@ -12,7 +12,7 @@ return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
 
     use {
-        'sainnhe/gruvbox-material',
+        'luisiacc/gruvbox-baby',
         config = function() require('plugins/colorscheme') end
     }
 
