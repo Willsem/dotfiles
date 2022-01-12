@@ -11,7 +11,10 @@ end
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
 
-    use 'folke/tokyonight.nvim'
+    use {
+        'sainnhe/gruvbox-material',
+        config = function() require('plugins/colorscheme') end
+    }
 
     use {
         'neovim/nvim-lspconfig',

@@ -5,7 +5,11 @@ local LEFT = 1
 local MIDDLE = 2
 local RIGHT = 3
 
-local colors = require("tokyonight.colors").setup({})
+vim.cmd[[
+let g:gruvbox_material_statusline_style = 'original'
+]]
+
+local colors = require("lualine.themes.gruvbox-material")
 colors.bg = colors.bg_dark
 
 local vi_mode_colors = {

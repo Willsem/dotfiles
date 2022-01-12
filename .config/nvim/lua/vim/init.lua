@@ -32,5 +32,3 @@ set listchars=tab:-->,space:·,nbsp:␣,trail:•,precedes:«,extends:»
 set colorcolumn=79
 set showtabline=2
 ]]
-
-require('vim/colors')
