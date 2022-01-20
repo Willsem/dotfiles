@@ -9,5 +9,5 @@ require("rest-nvim").setup({
 })
 
 vim.cmd[[
-nmap <C-r> <Plug>RestNvim
+nmap <C-e> <Plug>RestNvim
 ]]

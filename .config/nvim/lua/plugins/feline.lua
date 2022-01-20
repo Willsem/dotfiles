@@ -122,7 +122,7 @@ table.insert(components.active[MIDDLE], {
 table.insert(components.active[MIDDLE], {
     provider = 'diagnostic_errors',
     enabled = function()
-        return lsp.diagnostics_exist('Error')
+        return lsp.diagnostics_exist('ERROR')
     end,
     hl = {
         fg = colors.red
@@ -132,7 +132,7 @@ table.insert(components.active[MIDDLE], {
 table.insert(components.active[MIDDLE], {
     provider = 'diagnostic_warnings',
     enabled = function()
-        return lsp.diagnostics_exist('Warning')
+        return lsp.diagnostics_exist('WARN')
     end,
     hl = {
         fg = colors.yellow
@@ -142,7 +142,7 @@ table.insert(components.active[MIDDLE], {
 table.insert(components.active[MIDDLE], {
     provider = 'diagnostic_hints',
     enabled = function()
-        return lsp.diagnostics_exist('Hint')
+        return lsp.diagnostics_exist('HINT')
     end,
     hl = {
         fg = colors.cyan
@@ -152,7 +152,7 @@ table.insert(components.active[MIDDLE], {
 table.insert(components.active[MIDDLE], {
     provider = 'diagnostic_info',
     enabled = function()
-        return lsp.diagnostics_exist('Information')
+        return lsp.diagnostics_exist('INFO')
     end,
     hl = {
         fg = colors.blue
