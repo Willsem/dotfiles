@@ -8,9 +8,11 @@ local RIGHT = 3
 local colors = require("gruvbox-baby.colors")
 local config = require("gruvbox-baby.config")
 
+colors = colors.config(config)
+
 colors.bg = colors.background_dark
 colors.yellow = colors.soft_yellow
-colors.green = colors.soft_green
+colors.green = colors.forest_green
 colors.blue = colors.light_blue
 
 local vi_mode_colors = {
@@ -38,7 +40,7 @@ table.insert(components.active[LEFT], {
         local color = vi_mode_colors[vi_mode_utils.get_vim_mode()]
 
         if color then
-            val.bg = color
+            val.bg = colors[color]
         else
             val.bg = 'red'
         end
@@ -112,7 +114,7 @@ table.insert(components.active[LEFT], {
 table.insert(components.active[MIDDLE], {
     provider = 'lsp_client_names',
     hl = {
-        fg = 'yellow',
+        fg = colors.yellow,
         bg = 'bg',
         style = 'bold'
     },
