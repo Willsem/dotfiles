@@ -13,3 +13,8 @@ require('nvim-treesitter.configs').setup {
     enable = true,
   },
 }
+
+require('spellsitter').setup()
+vim.cmd[[
+set spell
+]]

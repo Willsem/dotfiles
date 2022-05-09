@@ -22,7 +22,7 @@ cmp.setup({
     }
 })
 
-local servers = {'clangd', 'gopls', 'cmake', 'pyright', 'tsserver', 'csharp_ls'}
+local servers = {'clangd', 'gopls', 'cmake', 'pyright', 'tsserver', 'csharp_ls', 'vuels'}
 
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup{
@@ -44,3 +44,5 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 vim.cmd[[
 nnoremap <C-d> :GoDef<CR>
 ]]
+
+require('fidget').setup{}

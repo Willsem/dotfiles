@@ -26,12 +26,16 @@ return require('packer').startup(function()
             'hrsh7th/vim-vsnip',
             'ray-x/lsp_signature.nvim',
             'fatih/vim-go',
+            'j-hui/fidget.nvim',
         },
         config = function() require('plugins/lspconfig') end
     }
 
     use {
         'nvim-treesitter/nvim-treesitter',
+        requires = {
+            'lewis6991/spellsitter.nvim'
+        },
         run = ':TSUpdate',
         config = function() require('plugins/treesitter') end
     }
@@ -39,6 +43,12 @@ return require('packer').startup(function()
     use {
         'famiu/feline.nvim',
         config = function() require('plugins/feline') end
+    }
+
+    use {
+        'alvarosevilla95/luatab.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function() require('plugins/luatab') end
     }
 
     use {
@@ -78,4 +88,6 @@ return require('packer').startup(function()
     use 'editorconfig/editorconfig-vim'
 
     use 'cespare/vim-toml'
+
+    use 'wakatime/vim-wakatime'
 end)
