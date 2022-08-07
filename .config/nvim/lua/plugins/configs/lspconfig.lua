@@ -1,7 +1,18 @@
 local nvim_lsp = require'lspconfig'
 local cmp = require'cmp'
+local lspkind = require'lspkind'
 
-local servers = {'clangd', 'gopls', 'cmake', 'pyright', 'tsserver', 'csharp_ls', 'vuels', 'sumneko_lua'}
+local servers = {
+    'clangd',
+    'gopls',
+    'cmake',
+    'pyright',
+    'tsserver',
+    'csharp_ls',
+    'vuels',
+    'sumneko_lua',
+    'rust_analyzer',
+}
 
 cmp.setup {
     sources = {
@@ -21,8 +32,14 @@ cmp.setup {
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
+
+    formatting = {
+        format = lspkind.cmp_format({
+            mode = 'symbol_text',
+        })
+    }
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -34,17 +51,13 @@ for _, lsp in ipairs(servers) do
     }
 end
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-      prefix = '',
+vim.keymap.set('n', '<C-d>', ':GoDef<CR>')
+
+require'lspsaga'.setup {
+    code_action_prompt = {
+        enable = false,
+        sign = false,
     },
-  }
-)
+}
 
-vim.cmd[[
-nnoremap <C-d> :GoDef<CR>
-]]
-
-require'lspsaga'.setup()
-require'fidget'.setup()
+require'fidget'.setup {}

@@ -1,6 +1,6 @@
 local keys = vim.keymap
 
-keys.set('n', '<leader>ff', "<cmd>lua require'telescope.builtin'.find_files()<cr>")
-keys.set('n', '<leader>fg', "<cmd>lua require'telescope.builtin'.live_grep()<cr>")
-keys.set('n', '<leader>fb', "<cmd>lua require'telescope.builtin'.buffers()<cr>")
-keys.set('n', '<leader>fh', "<cmd>lua require'telescope.builtin'.help_tags()<cr>")
+keys.set('n', '<leader>ff', function() require'telescope.builtin'.find_files() end)
+keys.set('n', '<leader>fg', function() require'telescope.builtin'.live_grep() end)
+keys.set('n', '<leader>fb', function() require'telescope.builtin'.buffers() end)
+keys.set('n', '<leader>fh', function() require'telescope.builtin'.help_tags() end)

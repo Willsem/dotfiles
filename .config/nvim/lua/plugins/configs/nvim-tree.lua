@@ -1,13 +1,7 @@
 require'nvim-tree'.setup {
     filters = {
-        custom = { '.git', 'node_modules', '.cache', 'bin', 'obj', '.DS_Store' }
+        custom = { '.DS_Store' }
     },
-
-    renderer = {
-        indent_markers = {
-            enable = true
-        }
-    }
 }
 
 local keys = vim.keymap

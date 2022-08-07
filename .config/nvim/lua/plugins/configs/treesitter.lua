@@ -9,8 +9,19 @@ parser_configs.http = {
 }
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {'c', 'cpp', 'go', 'lua', 'python', 'dockerfile', 'http', 'typescript', 'vue'},
-  highlight = {
-    enable = true,
-  },
+    ensure_installed = {
+        'c',
+        'cpp',
+        'go',
+        'lua',
+        'python',
+        'dockerfile',
+        'http',
+        'typescript',
+        'vue',
+        'rust',
+    },
+    highlight = {
+        enable = true,
+    },
 }
