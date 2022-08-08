@@ -1,34 +1,34 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path })
     execute 'packadd packer.nvim'
 end
 
-return require'packer'.startup(function()
+return require 'packer'.startup(function()
     -- Plugin manager
     use 'wbthomason/packer.nvim'
 
     -- Colorscheme
     use {
         'rebelot/kanagawa.nvim',
-        config = function() require'plugins/configs/colorscheme' end
+        config = function() require 'plugins/configs/colorscheme' end
     }
 
     -- Statusline component
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        config = function() require'plugins/configs/lualine' end
+        config = function() require 'plugins/configs/lualine' end
     }
 
     -- Tabline component
     use {
         'nanozuki/tabby.nvim',
-        config = function() require'plugins/configs/tabby' end
+        config = function() require 'plugins/configs/tabby' end
     }
 
     -- LSP configuration and language supports
@@ -61,16 +61,21 @@ return require'packer'.startup(function()
             'L3MON4D3/LuaSnip',
             'saadparwaiz1/cmp_luasnip',
 
+            -- Setup colors
+            'folke/lsp-colors.nvim',
+
+            -- A tree like view for symbols
+            'simrat39/symbols-outline.nvim',
         },
 
-        config = function() require'plugins/configs/lspconfig' end
+        config = function() require 'plugins/configs/lspconfig' end
     }
 
     -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-        config = function() require'plugins/configs/treesitter' end
+        config = function() require 'plugins/configs/treesitter' end
     }
 
     -- File explorer
@@ -79,21 +84,21 @@ return require'packer'.startup(function()
         requires = {
             'kyazdani42/nvim-web-devicons',
         },
-        config = function() require'plugins/configs/nvim-tree' end,
+        config = function() require 'plugins/configs/nvim-tree' end,
         tag = 'nightly'
     }
 
     -- Telescope
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {'nvim-lua/plenary.nvim'},
-        config = function () require'plugins/configs/telescope' end
+        requires = { 'nvim-lua/plenary.nvim' },
+        config = function() require 'plugins/configs/telescope' end
     }
 
     -- Indents
     use {
         'lukas-reineke/indent-blankline.nvim',
-        config = function () require'plugins/configs/indent' end
+        config = function() require 'plugins/configs/indent' end
     }
 
     -- Editorconfig supprot plugin
@@ -102,25 +107,30 @@ return require'packer'.startup(function()
     -- Git signs
     use {
         'lewis6991/gitsigns.nvim',
-        config = function() require'plugins/configs/git-signs' end
+        config = function() require 'plugins/configs/git-signs' end
     }
 
     -- Git blame commit
     use {
         'f-person/git-blame.nvim',
-        config = function() require'plugins/configs/git-blame' end
+        config = function() require 'plugins/configs/git-blame' end
     }
 
     -- LazyGit support inside neovim
     use {
         'kdheepak/lazygit.nvim',
-        config = function() require'plugins/configs/lazygit' end
+        config = function() require 'plugins/configs/lazygit' end
     }
 
     -- Todos comment viewer
     use {
         "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
-        config = function() require'plugins/configs/todo-comments' end
+        config = function() require 'plugins/configs/todo-comments' end
+    }
+
+    use {
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
     }
 end)

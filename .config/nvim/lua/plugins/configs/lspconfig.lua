@@ -1,6 +1,6 @@
-local nvim_lsp = require'lspconfig'
-local cmp = require'cmp'
-local lspkind = require'lspkind'
+local nvim_lsp = require 'lspconfig'
+local cmp = require 'cmp'
+local lspkind = require 'lspkind'
 
 local servers = {
     'clangd',
@@ -23,7 +23,7 @@ cmp.setup {
 
     snippet = {
         expand = function(args)
-            require'luasnip'.lsp_expand(args.body)
+            require 'luasnip'.lsp_expand(args.body)
         end,
     },
 
@@ -46,18 +46,22 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup{
+    nvim_lsp[lsp].setup {
         capabilities = capabilities,
     }
 end
 
 vim.keymap.set('n', '<C-d>', ':GoDef<CR>')
 
-require'lspsaga'.setup {
+require 'lspsaga'.setup {
     code_action_prompt = {
         enable = false,
         sign = false,
     },
 }
 
-require'fidget'.setup {}
+require 'fidget'.setup {}
+
+vim.keymap.set('n', '<leader>fo', ':SymbolsOutline<CR>')
+
+-- require'navigator'.setup()
