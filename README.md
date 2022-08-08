@@ -7,7 +7,7 @@
 ### Now using
 
 * Operating system - `MacOS Big Sur`
-* Font - `SF Mono`
+* Font - `Cascadia Code`
 * Terminal emulator - `kitty`
 * Terminal multiplexer - `tmux`
 * Shell - `zsh` + `oh my zsh`
