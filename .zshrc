@@ -1,4 +1,4 @@
-export ZSH="/Users/alex/.oh-my-zsh"
+export ZSH="/Users/a.o.stepanov/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
@@ -18,7 +18,6 @@ alias vim="nvim"
 export EMACS="*term*"
 
 export PATH=$PATH:/usr/local/opt/llvm/bin
-export PATH=$PATH:/Users/alex/go/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/usr/local/opt/libpq/bin
 
@@ -28,11 +27,11 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include"
 export CMAKE_PREFIX_PATH=/usr/local/opt/qt5/
 export EDITOR='nvim'
 export VISUAL='nvim'
-export PATH="$PATH:/Users/alex/.dotnet/tools"
-export PATH="$PATH:/Applications/MATLAB_R2021a.app/Contents/MacOS"
-export PATH="$PATH:/Users/alex/.local/bin"
-export GO_PATH=~/go
-export PATH=$PATH:$GO_PATH/bin
+export PATH="$PATH:~/.dotnet/tools"
+export PATH="$PATH:~/.local/bin"
+export GOPATH=~/go
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:~/.flutter/bin
 
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
