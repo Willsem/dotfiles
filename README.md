@@ -6,7 +6,7 @@
 
 ### Now using
 
-* Operating system - `MacOS Big Sur`
+* Operating system - `MacOS Monterey`
 * Font - `Cascadia Code`
 * Terminal emulator - `kitty`
 * Terminal multiplexer - `tmux`
