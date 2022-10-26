@@ -2,7 +2,7 @@
 -- Eviline config for lualine
 -- Author: shadmansaleh
 -- Credit: glepnir
-local lualine = require('lualine')
+local lualine = require 'lualine'
 
 local colors = {
     bg       = '#2a2a37',
@@ -85,7 +85,7 @@ ins_left {
 ins_left {
     -- mode component
     function()
-        return ''
+        return ''
     end,
     color = function()
         -- auto change color according to neovims mode
