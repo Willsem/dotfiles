@@ -1,7 +1,3 @@
-local plugins = require("core.plugins")
-local packer = require("core.packer")
-packer.load(plugins)
-
 local packages = {
   "core.options",
 }
@@ -9,3 +5,7 @@ local packages = {
 for _, package in ipairs(packages) do
   require(package)
 end
+
+local plugins = require("core.plugins")
+local lazy = require("core.lazy")
+lazy.load(plugins)

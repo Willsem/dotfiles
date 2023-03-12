@@ -8,10 +8,10 @@ local P = {
 local telescope_builtin = require('telescope.builtin')
 
 P.groups = {
-  { prefix = "<leader>f", name = "Find"   },
-  { prefix = "<leader>l", name = "LSP"    },
-  { prefix = "<leader>p", name = "Packer" },
-  { prefix = "<leader>g", name = "Git"    },
+  { prefix = "<leader>f", name = "Find"                  },
+  { prefix = "<leader>l", name = "LSP"                   },
+  { prefix = "<leader>p", name = "Plugin manager (Lazy)" },
+  { prefix = "<leader>g", name = "Git"                   },
 }
 
 -- Bufferline
@@ -61,10 +61,13 @@ P.mappings.n["gr"] =         { desc = "Go to references",     cmd = vim.lsp.buf.
 P.mappings.n["<leader>lR"] = { desc = "Rename symbol",        cmd = vim.lsp.buf.rename         }
 
 -- Packer group
-P.mappings.n["<leader>pc"] = { desc = "Packer compile", cmd = "<cmd>PackerCompile<cr>" }
-P.mappings.n["<leader>pi"] = { desc = "Packer install", cmd = "<cmd>PackerInstall<cr>" }
-P.mappings.n["<leader>ps"] = { desc = "Packer sync",    cmd = "<cmd>PackerSync<cr>"    }
-P.mappings.n["<leader>pu"] = { desc = "Packer update",  cmd = "<cmd>PackerUpdate<cr>"  }
+local lazy = require("lazy")
+P.mappings.n["<leader>pc"] = { desc = "Check for updates", cmd = lazy.check }
+P.mappings.n["<leader>pC"] = { desc = "Clean plugins", cmd = lazy.clean }
+P.mappings.n["<leader>ph"] = { desc = "Healthcheck", cmd = lazy.health }
+P.mappings.n["<leader>pp"] = { desc = "Profile",    cmd = lazy.profile    }
+P.mappings.n["<leader>ps"] = { desc = "Sync",  cmd = lazy.sync  }
+P.mappings.n["<leader>pu"] = { desc = "Update",  cmd = lazy.update  }
 
 -- Git mappings
 local gitsigns = require("gitsigns")

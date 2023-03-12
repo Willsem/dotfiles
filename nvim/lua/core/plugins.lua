@@ -1,6 +1,6 @@
 return {
   -- Plugin manager
-  { "wbthomason/packer.nvim" },
+  "wbthomason/packer.nvim",
 
   -- Cache optimizer
   {
@@ -13,7 +13,7 @@ return {
   -- Colorscheme
   {
     "catppuccin/nvim",
-    as = "catppuccin",
+    name = "catppuccin",
     config = function()
       require("configs.colorscheme")
     end,
@@ -36,12 +36,12 @@ return {
   },
 
   -- LSP
-  { "neovim/nvim-lspconfig" },
+  "neovim/nvim-lspconfig",
 
   -- LSP completion
   {
     "hrsh7th/nvim-cmp",
-    requires = {
+    dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -65,7 +65,7 @@ return {
   -- TreeSitter
   {
     "nvim-treesitter/nvim-treesitter",
-    run = ':TSUpdate',
+    build = ':TSUpdate',
     config = function()
       require("configs.treesitter")
     end,
@@ -74,8 +74,8 @@ return {
   -- Tree explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
-    requires = {
+    version = "2.x",
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
@@ -112,24 +112,28 @@ return {
   -- Bufferline
   {
     "akinsho/bufferline.nvim",
-    tag = "v3.*",
-    requires = "nvim-tree/nvim-web-devicons",
+    version = "3.*",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
     config = function()
       require("configs.bufferline")
     end,
   },
 
   -- Buffer closing
-  { "famiu/bufdelete.nvim" },
+  "famiu/bufdelete.nvim",
 
   -- Splits moving and resizing
-  { "mrjones2014/smart-splits.nvim" },
+  "mrjones2014/smart-splits.nvim",
 
   -- Fuzzy finder
   {
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
-    requires = "nvim-lua/plenary.nvim",
+    version = "0.1.*",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
     config = function()
       require("configs.telescope")
     end,
