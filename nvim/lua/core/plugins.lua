@@ -33,7 +33,29 @@ return {
   },
 
   -- LSP
-  "neovim/nvim-lspconfig",
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "neovim/nvim-lspconfig",
+    },
+    config = function()
+      require("configs.mason-lspconfig")
+    end,
+  },
+
+  -- Formating and linting
+  {
+    "jay-babu/mason-null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "jose-elias-alvarez/null-ls.nvim",
+    },
+    config = function()
+      require("configs.mason-null-ls")
+    end,
+  },
 
   -- LSP completion
   {
@@ -49,14 +71,6 @@ return {
     },
     config = function()
       require("configs.cmp")
-    end,
-  },
-
-  -- Bridge between mason and lspconfig
-  {
-    "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("configs.mason-lspconfig")
     end,
   },
 
