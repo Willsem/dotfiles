@@ -2,8 +2,16 @@ local cmp = require("cmp")
 local luasnip = require("luasnip")
 local border_opts =
   { border = "single", winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None" }
+local lspkind = require('lspkind')
 
 cmp.setup({
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol_text",
+      maxwidth = 50,
+      ellipsis_char = '...',
+    }),
+  },
   sources = {
     { name = "nvim_lsp" },
     { name = "buffer" },
