@@ -9,7 +9,6 @@ require("indent_blankline").setup({
     "aerial",
     "alpha",
     "dashboard",
-    "packer",
     "neogitstatus",
     "NvimTree",
     "neo-tree",

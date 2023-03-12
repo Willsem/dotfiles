@@ -1,7 +1,4 @@
 return {
-  -- Plugin manager
-  "wbthomason/packer.nvim",
-
   -- Cache optimizer
   {
     "lewis6991/impatient.nvim",

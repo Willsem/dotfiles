@@ -60,7 +60,7 @@ P.mappings.n["<leader>lr"] = { desc = "Go to references",     cmd = vim.lsp.buf.
 P.mappings.n["gr"] =         { desc = "Go to references",     cmd = vim.lsp.buf.references     }
 P.mappings.n["<leader>lR"] = { desc = "Rename symbol",        cmd = vim.lsp.buf.rename         }
 
--- Packer group
+-- Plugin manager group
 local lazy = require("lazy")
 P.mappings.n["<leader>pc"] = { desc = "Check for updates", cmd = lazy.check }
 P.mappings.n["<leader>pC"] = { desc = "Clean plugins", cmd = lazy.clean }

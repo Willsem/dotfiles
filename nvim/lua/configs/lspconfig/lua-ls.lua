@@ -3,7 +3,7 @@ return {
     Lua = {
       telemetry = { enable = false },
       runtime = { version = "LuaJIT" },
-      diagnostics = { globals = { "vim", "packer_plugins", "bit" } },
+      diagnostics = { globals = { "vim" } },
       workspace = {
         library = {
           vim.fn.expand("$VIMRUNTIME/lua"),
