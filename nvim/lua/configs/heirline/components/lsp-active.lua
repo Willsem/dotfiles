@@ -10,5 +10,5 @@ return {
     end
     return " " .. table.concat(names, " ")
   end,
-  hl = { fg = "green", bg = "bg" },
+  hl = { fg = "fg", bg = "bg" },
 }

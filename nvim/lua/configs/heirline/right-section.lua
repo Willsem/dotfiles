@@ -6,7 +6,8 @@ local vi_mode = require("configs.heirline.components.vi-mode")
 
 local alignment = require("configs.heirline.components.alignment")
 local space = alignment.space
+local separator = alignment.separator
 
 return {
-  lsp_active, space, treesitter, space, line_number, space, scrollbar, space, vi_mode,
+  lsp_active, separator, treesitter, separator, line_number, space, scrollbar, space, vi_mode,
 }

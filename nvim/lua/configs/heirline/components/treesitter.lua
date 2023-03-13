@@ -7,19 +7,12 @@ return {
     end,
   },
   provider = function(self)
-    local icon = "󰝦 "
+    local icon = "󰝦"
     if self.enabled(self.bufnr) then
-      icon = "󰪥 "
+      icon = "󰪥"
     end
 
-    return icon .. "TS"
+    return icon .. " TS"
   end,
-  hl = function(self)
-    local fg = "red"
-    if self.enabled(self.bufnr) then
-      fg = "green"
-    end
-
-    return { fg = fg, bg = "bg" }
-  end,
+  hl = { fg = "fg", bg = "bg" },
 }
