@@ -78,7 +78,7 @@ return {
   -- TreeSitter
   {
     "nvim-treesitter/nvim-treesitter",
-    build = ':TSUpdate',
+    build = ":TSUpdate",
     dependencies = {
       "windwp/nvim-ts-autotag",
     },
@@ -120,6 +120,19 @@ return {
   -- Statusline
   {
     "rebelot/heirline.nvim",
+    dependencies = {
+      {
+        "linrongbin16/lsp-progress.nvim",
+        branch = "main",
+        event = { "VimEnter" },
+        dependencies = {
+          "nvim-tree/nvim-web-devicons",
+        },
+        config = function()
+          require("configs.lsp-progress")
+        end,
+      },
+    },
     config = function()
       require("configs.heirline")
     end,
