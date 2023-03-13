@@ -67,6 +67,7 @@ return {
       "hrsh7th/cmp-cmdline",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
+      "rafamadriz/friendly-snippets",
       "onsails/lspkind.nvim",
     },
     config = function()
@@ -78,6 +79,9 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ':TSUpdate',
+    dependencies = {
+      "windwp/nvim-ts-autotag",
+    },
     config = function()
       require("configs.treesitter")
     end,
@@ -165,5 +169,29 @@ return {
     config = function()
       require("configs.indent-blankline")
     end,
+  },
+
+  -- Autopairs
+  {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("configs.nvim-autopairs")
+    end,
+  },
+
+  -- Automatic indentation
+  {
+    "nmac427/guess-indent.nvim",
+    config = function()
+      require("configs.guess-indent")
+    end,
+  },
+
+  -- Commenting by a mapping
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+        require("configs.Comment")
+    end
   },
 }

@@ -2,6 +2,7 @@ local P = {
   groups = {},
   mappings = {
     n = {},
+    v = {},
   },
 }
 
@@ -73,5 +74,10 @@ P.mappings.n["<leader>pu"] = { desc = "Update",  cmd = lazy.update  }
 local gitsigns = require("gitsigns")
 P.mappings.n["<leader>gl"] = { desc = "Blame line",    cmd = gitsigns.blame_line }
 P.mappings.n["<leader>gd"] = { desc = "Open git diff", cmd = gitsigns.diffthis }
+
+-- Comment
+P.mappings.n["<leader>/"] = { desc = "Comment line", cmd = require("Comment.api").toggle.linewise.current }
+P.mappings.v["<leader>/"] =
+  { desc = "Toggle comment line", cmd = "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>" }
 
 return P

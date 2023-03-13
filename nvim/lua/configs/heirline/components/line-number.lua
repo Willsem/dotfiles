@@ -1,3 +1,3 @@
 return {
-    provider = "%l:%c",
+  provider = "%l:%c",
 }
