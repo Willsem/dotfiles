@@ -2,8 +2,8 @@ local actions = require("telescope.actions")
 
 require("telescope").setup({
   defaults = {
-    prompt_prefix = " ",
-    selection_caret = " ",
+    prompt_prefix = " ",
+    selection_caret = "❯ ",
     mappings = {
       i = {
         ["<C-n>"] = actions.cycle_history_next,

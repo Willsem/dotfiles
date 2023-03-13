@@ -16,6 +16,14 @@ return {
     end,
   },
 
+  -- Startup screen
+  {
+    "goolord/alpha-nvim",
+    config = function ()
+      require("configs.alpha")
+    end,
+  },
+
   -- Notifications
   {
     "rcarriga/nvim-notify",

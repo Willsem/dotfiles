@@ -10,4 +10,6 @@ colors.git_change = colors.orange
 colors.bg = colors.mantle
 colors.fg = colors.text
 
+colors.fg_light = colors.surface2
+
 return colors
