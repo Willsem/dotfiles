@@ -8,7 +8,7 @@ colors.git_del = colors.red
 colors.git_change = colors.orange
 
 colors.bg = colors.mantle
-colors.fg = colors.text
+colors.fg = colors.subtext1
 
 colors.fg_light = colors.surface2
 
