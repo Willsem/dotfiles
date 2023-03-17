@@ -6,10 +6,11 @@
 
 ### Now using
 
-* Operating system - `MacOS Monterey`
-* Font - `Cascadia Code`
-* Terminal emulator - `kitty`
-* Terminal multiplexer - `tmux`
-* Shell - `zsh` + `oh my zsh`
-* Text editor - `NeoVim`
-* NeoVim plugin manager - `packer`
+- Operating system - `MacOS Ventyra`
+- Window manager - `yabai` + `skhd`
+- Font - `JetBrainsMono Nerd Font`
+- Terminal emulator - `iTerm 2`
+- Terminal multiplexer - `tmux`
+- Shell - `zsh` + `oh my zsh`
+- Text editor - `NeoVim`
+- NeoVim plugin manager - `lazy`
