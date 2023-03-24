@@ -5,6 +5,4 @@ local git_changes = require("configs.heirline.components.git-changes")
 local alignment = require("configs.heirline.components.alignment")
 local separator = alignment.separator
 
-return {
-  vi_mode, separator, git_branch, separator, git_changes,
-}
+return {vi_mode, separator, git_branch, separator, git_changes}
