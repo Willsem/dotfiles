@@ -8,12 +8,17 @@ local lspkind = require('lspkind')
 
 cmp.setup({
     formatting = {
-        format = lspkind.cmp_format({
-            mode = "symbol",
-            maxwidth = 50,
-            ellipsis_char = '...',
-            before = function(entry, vim_item) return vim_item end
-        })
+        fields = {"kind", "abbr", "menu"},
+        format = function(entry, vim_item)
+            local kind = require("lspkind").cmp_format({
+                mode = "symbol",
+                maxwidth = 50
+            })(entry, vim_item)
+
+            local strings = vim.split(kind.kind, "%s", {trimempty = true})
+            kind.kind = " " .. (strings[1] or "") .. " "
+            return kind
+        end
     },
     sources = {
         {name = "nvim_lsp"}, {name = "buffer"}, {name = "path"},
