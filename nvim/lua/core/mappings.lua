@@ -8,6 +8,11 @@ P.groups = {
     {prefix = "<leader>g", name = "Git"}
 }
 
+P.mappings.n["<leader>h"] = {
+    desc = "Disable search highlighting",
+    cmd = "<cmd>nohlsearch<cr>"
+}
+
 -- Bufferline
 P.mappings.n["<S-l>"] = {
     desc = "Next buffer",
