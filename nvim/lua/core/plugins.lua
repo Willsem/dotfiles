@@ -23,7 +23,10 @@ return {
     }, {
         -- LSP
         "williamboman/mason-lspconfig.nvim",
-        dependencies = {"williamboman/mason.nvim", "neovim/nvim-lspconfig"},
+        dependencies = {
+            "williamboman/mason.nvim", "neovim/nvim-lspconfig",
+            "SmiteshP/nvim-navic"
+        },
         config = function() require("configs.mason-lspconfig") end
     }, {
         -- Formating and linting
@@ -84,7 +87,12 @@ return {
         },
         config = function() require("configs.heirline") end
     }, {
-        -- Bufferline
+        "utilyre/barbecue.nvim",
+        version = "*",
+        dependencies = {"SmiteshP/nvim-navic", "nvim-tree/nvim-web-devicons"},
+        config = function() require("configs.barbecue") end
+    }, {
+        -- Bfferline
         "akinsho/bufferline.nvim",
         version = "3.*",
         dependencies = {"nvim-tree/nvim-web-devicons"},
