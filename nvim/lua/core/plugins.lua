@@ -14,8 +14,10 @@ return {
         config = function() require("configs.alpha") end
     }, {
         -- Notifications
-        "rcarriga/nvim-notify",
-        config = function() require("configs.notify") end
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        dependencies = {"MunifTanjim/nui.nvim", "rcarriga/nvim-notify"},
+        config = function() require("configs.noice") end
     }, {
         -- LSP installer
         "williamboman/mason.nvim",
