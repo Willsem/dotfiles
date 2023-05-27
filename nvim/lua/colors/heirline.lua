@@ -7,6 +7,11 @@ colors.git_add = colors.green
 colors.git_del = colors.red
 colors.git_change = colors.orange
 
+colors.error = colors.red
+colors.warning = colors.yellow
+colors.info = colors.blue
+colors.hint = colors.blue
+
 colors.bg = colors.mantle
 colors.fg = colors.subtext1
 
