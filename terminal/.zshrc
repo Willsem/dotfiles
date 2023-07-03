@@ -2,6 +2,7 @@ export ZSH="/Users/a.o.stepanov/.oh-my-zsh"
 plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
+alias ls="exa --icons"
 alias l="exa -lahg --icons"
 alias ll="exa -lhg --icons"
 alias lt="exa -lahg --tree --icons"
