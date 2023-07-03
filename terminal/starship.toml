@@ -1,12 +1,23 @@
 # Inserts a blank line between shell prompts
 add_newline = true
 
-[line_break]
-disabled = true
+format = '╭─ $all'
 
-# Replace the '❯' symbol in the prompt with '➜'
-# [character] # The name of the module we are configuring is 'character'
-# success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+[character] # The name of the module we are configuring is 'character'
+format = '╰─$symbol '
+success_symbol = '[❯](bold green)'
+error_symbol = '[❯](bold red)'
+
+[directory]
+truncation_length = 0
+truncate_to_repo = false
+truncation_symbol = '…/'
+style = 'bold blue'
+format = '[$path]($style)[$read_only]($read_only_style) '
+
+[git_branch]
+symbol = ' '
+style = 'bold green'
 
 # Disable the package module, hiding it from the prompt completely
 [package]
