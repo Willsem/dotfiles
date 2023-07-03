@@ -24,4 +24,10 @@ style = 'bold green'
 disabled = true
 
 [golang]
-format = 'via [ $version](bold cyan)'
+symbol = ' '
+
+[nodejs]
+symbol = '󰎙 '
+
+[lua]
+symbol = ' '
