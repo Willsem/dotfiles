@@ -22,3 +22,6 @@ style = 'bold green'
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
+
+[golang]
+format = 'via [ $version](bold cyan)'
