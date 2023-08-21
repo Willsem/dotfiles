@@ -16,7 +16,7 @@ end
 
 whichkey.setup({
     key_labels = {["<leader>"] = "SPACE"},
-    icons = {breadcrumb = "»", separator = "", group = "+"},
+    icons = {breadcrumb = "»", separator = "", group = ""},
     window = {
         border = "single",
         position = "bottom",

@@ -7,7 +7,8 @@ return {
         -- Colorscheme
         "catppuccin/nvim",
         name = "catppuccin",
-        config = function() require("configs.colorscheme") end
+        config = function() require("configs.colorscheme") end,
+        priority = 1000
     }, {
         -- Startup screen
         "goolord/alpha-nvim",
@@ -59,7 +60,7 @@ return {
     }, {
         -- Tree explorer
         "nvim-neo-tree/neo-tree.nvim",
-        version = "2.x",
+        branch = "v3.x",
         dependencies = {
             "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons",
             "MunifTanjim/nui.nvim"
@@ -108,21 +109,9 @@ return {
         dependencies = {"nvim-lua/plenary.nvim"},
         config = function() require("configs.telescope") end
     }, {
-        -- Escape mappings
-        "max397574/better-escape.nvim",
-        config = function() require("configs.better-escape") end
-    }, {
         -- Indentline
         "lukas-reineke/indent-blankline.nvim",
         config = function() require("configs.indent-blankline") end
-    }, {
-        -- Autopairs
-        "windwp/nvim-autopairs",
-        config = function() require("configs.nvim-autopairs") end
-    }, {
-        -- Automatic indentation
-        "nmac427/guess-indent.nvim",
-        config = function() require("configs.guess-indent") end
     }, {
         -- Commenting by a mapping
         "numToStr/Comment.nvim",

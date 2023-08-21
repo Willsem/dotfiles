@@ -7,5 +7,5 @@ return {
 
     hl = {fg = "mauve", bg = "bg", bold = true},
 
-    provider = function(self) return " " .. self.branch end
+    provider = function(self) return " " .. self.branch end
 }

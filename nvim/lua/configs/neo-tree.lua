@@ -7,6 +7,12 @@ require("neo-tree").setup({
             folder_closed = "󰉋",
             folder_open = "󰝰",
             folder_empty = "󰉖"
+        },
+        indent = {
+            with_markers = false,
+            with_expanders = true,
+            expander_collapsed = "",
+            expander_expanded = ""
         }
     },
     window = {
