@@ -40,7 +40,7 @@ dashboard.section.buttons.val = {
     dashboard.button("SPC f f", "  Find File", ":Telescope find_files<CR>"),
     dashboard.button("SPC f o", "󰈚  Recent Files", ":Telescope oldfiles<CR>"),
     dashboard.button("SPC f w", "󰈭  Find Word", ":Telescope live_grep<CR>"),
-    dashboard.button("q", "  Quit NVIM", ":qa<CR>")
+    dashboard.button("q", "󰗼  Quit NVIM", ":qa<CR>")
 }
 
 require("alpha").setup(dashboard.config)
