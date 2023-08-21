@@ -28,10 +28,12 @@ dashboard.section.header.val = {
     [[        /_//_/\__/\___/___/_/_/_/_/       ]]
 }
 
-local plugins = #vim.tbl_keys(require("lazy").plugins())
+local stats = require('lazy').stats()
+local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
 local v = vim.version()
-dashboard.section.footer.val = string.format("󰂖 %d   %d.%d.%d",
-                                             plugins, v.major, v.minor, v.patch)
+dashboard.section.footer.val = string.format(
+                                   " %d.%d.%d  󰂖 %d plugins loaded in %d ms",
+                                   v.major, v.minor, v.patch, stats.count, ms)
 
 dashboard.section.buttons.val = {
     dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
