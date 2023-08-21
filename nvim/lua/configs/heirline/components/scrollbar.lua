@@ -6,5 +6,5 @@ return {
         local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
         return string.rep(self.sbar[i], 2)
     end,
-    hl = {fg = "blue", bg = "bg"}
+    hl = {fg = "scrollbar", bg = "bg"}
 }

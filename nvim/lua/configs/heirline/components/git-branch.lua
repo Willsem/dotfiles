@@ -5,7 +5,7 @@ return {
 
     init = function(self) self.branch = vim.b.gitsigns_status_dict.head end,
 
-    hl = {fg = "mauve", bg = "bg", bold = true},
+    hl = {fg = "git_branch", bg = "bg", bold = true},
 
     provider = function(self) return " " .. self.branch end
 }

@@ -3,18 +3,28 @@ colors.cyan = colors.teal
 colors.orange = colors.peach
 colors.purple = colors.mauve
 
-colors.git_add = colors.green
-colors.git_del = colors.red
-colors.git_change = colors.orange
+return {
+    git_add = colors.green,
+    git_del = colors.red,
+    git_change = colors.orange,
 
-colors.error = colors.red
-colors.warning = colors.yellow
-colors.info = colors.blue
-colors.hint = colors.blue
+    git_branch = colors.mauve,
 
-colors.bg = colors.mantle
-colors.fg = colors.subtext1
+    scrollbar = colors.blue,
 
-colors.fg_light = colors.surface2
+    error = colors.red,
+    warning = colors.yellow,
+    info = colors.blue,
+    hint = colors.blue,
 
-return colors
+    bg = colors.mantle,
+    fg = colors.subtext1,
+
+    fg_light = colors.surface2,
+
+    red = colors.red,
+    green = colors.green,
+    cyan = colors.cyan,
+    orange = colors.orange,
+    purple = colors.purple
+}
