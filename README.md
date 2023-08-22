@@ -6,11 +6,11 @@
 
 ### Now using
 
-- Operating system - `MacOS Ventyra`
-- Window manager - `yabai` + `skhd`
-- Font - `Liga SFMono Nerd Font`
-- Terminal emulator - `kitty`
-- Terminal multiplexer - `tmux`
-- Shell - `zsh` + `oh my zsh` + `starship`
-- Text editor - `NeoVim`
-- NeoVim plugin manager - `lazy`
+- Operating system - [`MacOS Ventyra`](https://www.apple.com/macos/ventura/)
+- Window manager - [`yabai`](https://github.com/koekeishiya/yabai) + [`skhd`](https://github.com/koekeishiya/skhd)
+- Font - [`Liga SFMono Nerd Font`](./fonts/README.md)
+- Terminal emulator - [`kitty`](https://sw.kovidgoyal.net/kitty/)
+- Terminal multiplexer - [`tmux`](https://github.com/tmux/tmux)
+- Shell - [`zsh`](https://www.zsh.org) + [`starship`](https://starship.rs)
+- Text editor - [`NeoVim`](https://neovim.io)
+- NeoVim plugin manager - [`lazy`](https://github.com/folke/lazy.nvim)
