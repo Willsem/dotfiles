@@ -1,30 +1,27 @@
-local colors = require("catppuccin.palettes").get_palette("mocha")
-colors.cyan = colors.teal
-colors.orange = colors.peach
-colors.purple = colors.mauve
+local colors = require('vscode.colors').get_colors()
 
 return {
-    git_add = colors.green,
-    git_del = colors.red,
-    git_change = colors.orange,
+    git_add = colors.vscGitAdded,
+    git_del = colors.vscGitDeleted,
+    git_change = colors.vscGitModified,
 
-    git_branch = colors.mauve,
+    git_branch = colors.vscViolet,
 
-    scrollbar = colors.blue,
+    scrollbar = colors.vscBlue,
 
-    error = colors.red,
-    warning = colors.yellow,
-    info = colors.blue,
-    hint = colors.blue,
+    error = colors.vscRed,
+    warning = colors.vscYellow,
+    info = colors.vscBlue,
+    hint = colors.vscBlue,
 
-    bg = colors.mantle,
-    fg = colors.subtext1,
+    bg = colors.vscBack,
+    fg = colors.vscFront,
 
-    fg_light = colors.surface2,
+    fg_light = colors.vscGray,
 
-    red = colors.red,
-    green = colors.green,
-    cyan = colors.cyan,
-    orange = colors.orange,
-    purple = colors.purple
+    red = colors.vscRed,
+    green = colors.vscGreen,
+    cyan = colors.vscBlueGreen,
+    orange = colors.vscOrange,
+    purple = colors.vscViolet
 }

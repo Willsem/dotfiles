@@ -5,8 +5,7 @@ return {
         config = function() require("configs.impatient") end
     }, {
         -- Colorscheme
-        "catppuccin/nvim",
-        name = "catppuccin",
+        "Mofiqul/vscode.nvim",
         config = function() require("configs.colorscheme") end,
         priority = 1000
     }, {
