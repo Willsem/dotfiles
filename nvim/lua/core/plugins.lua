@@ -116,5 +116,10 @@ return {
         -- Commenting by a mapping
         "numToStr/Comment.nvim",
         config = function() require("configs.Comment") end
-    }, "gpanders/editorconfig.nvim"
+    }, "gpanders/editorconfig.nvim", -- Editorconfig
+    {
+        -- Scrollbar
+        "petertriho/nvim-scrollbar",
+        config = function() require("configs.scrollbar") end
+    }
 }
