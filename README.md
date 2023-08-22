@@ -8,9 +8,9 @@
 
 - Operating system - `MacOS Ventyra`
 - Window manager - `yabai` + `skhd`
-- Font - `JetBrainsMono Nerd Font`
-- Terminal emulator - `iTerm 2`
+- Font - `Liga SFMono Nerd Font`
+- Terminal emulator - `kitty`
 - Terminal multiplexer - `tmux`
-- Shell - `zsh` + `oh my zsh`
+- Shell - `zsh` + `oh my zsh` + `starship`
 - Text editor - `NeoVim`
 - NeoVim plugin manager - `lazy`
