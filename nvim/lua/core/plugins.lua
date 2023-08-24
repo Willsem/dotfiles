@@ -134,5 +134,9 @@ return {
             "nvim-neotest/neotest-jest"
         },
         config = function() require("configs.neotest") end
+    }, {
+        -- Autopairs
+        "windwp/nvim-autopairs",
+        config = function() require("configs.nvim-autopairs") end
     }
 }
