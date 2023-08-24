@@ -98,30 +98,32 @@ P.mappings.n["<leader>fh"] = {
 }
 
 -- LSP group
+local lsp_ui = require("LspUI").api
 P.mappings.n["<leader>ld"] = {
     desc = "Go to definition",
-    cmd = vim.lsp.buf.definition
+    cmd = lsp_ui.api.definition
 }
-P.mappings.n["gd"] = {desc = "Go to definition", cmd = vim.lsp.buf.definition}
+P.mappings.n["gd"] = {desc = "Go to definition", cmd = lsp_ui.api.definition}
 P.mappings.n["<leader>lD"] = {
     desc = "Go to declaration",
-    cmd = vim.lsp.buf.declaration
+    cmd = lsp_ui.api.declaration
 }
 P.mappings.n["gD"] = {desc = "Go to declaration", cmd = vim.lsp.buf.declaration}
 P.mappings.n["<leader>li"] = {
     desc = "Go to implementation",
-    cmd = vim.lsp.buf.implementation
+    cmd = lsp_ui.api.implementation
 }
 P.mappings.n["<leader>la"] = {
     desc = "Code actions",
-    cmd = vim.lsp.buf.code_action
+    cmd = lsp_ui.api.code_action
 }
 P.mappings.n["<leader>lr"] = {
     desc = "Go to references",
-    cmd = vim.lsp.buf.references
+    cmd = lsp_ui.api.reference
 }
-P.mappings.n["gr"] = {desc = "Go to references", cmd = vim.lsp.buf.references}
-P.mappings.n["<leader>lR"] = {desc = "Rename symbol", cmd = vim.lsp.buf.rename}
+P.mappings.n["gr"] = {desc = "Go to references", cmd = lsp_ui.api.reference}
+P.mappings.n["<leader>lR"] = {desc = "Rename symbol", cmd = lsp_ui.api.rename}
+P.mappings.n["<leader>lh"] = {desc = "LSP hover", cmd = lsp_ui.api.hover}
 
 -- Plugin manager group
 local lazy = require("lazy")

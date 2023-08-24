@@ -31,6 +31,12 @@ return {
         },
         config = function() require("configs.mason-lspconfig") end
     }, {
+        -- LSP actions with cool UI
+        "jinzhongjia/LspUI.nvim",
+        branch = "v2",
+        event = "VeryLazy",
+        config = function() require("configs.lsp-ui") end
+    }, {
         -- Formating and linting
         "jay-babu/mason-null-ls.nvim",
         event = {"BufReadPre", "BufNewFile"},
