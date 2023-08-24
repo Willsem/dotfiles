@@ -126,5 +126,13 @@ return {
         -- Scrollbar
         "petertriho/nvim-scrollbar",
         config = function() require("configs.scrollbar") end
+    }, {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter",
+            "antoinemadec/FixCursorHold.nvim", "nvim-neotest/neotest-go",
+            "nvim-neotest/neotest-jest"
+        },
+        config = function() require("configs.neotest") end
     }
 }
