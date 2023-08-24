@@ -21,3 +21,15 @@ require("mason-lspconfig").setup_handlers({
         require("lspconfig")[server_name].setup(settings)
     end
 })
+
+local signs = {
+    Error = " ",
+    Warning = " ",
+    Hint = " ",
+    Information = " "
+}
+
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+end
