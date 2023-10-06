@@ -138,5 +138,5 @@ return {
         -- Autopairs
         "windwp/nvim-autopairs",
         config = function() require("configs.nvim-autopairs") end
-    }
+    }, {"wakatime/vim-wakatime"}
 }
