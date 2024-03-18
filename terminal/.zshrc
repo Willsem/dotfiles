@@ -1,4 +1,4 @@
-export ZSH="/Users/a.o.stepanov/.oh-my-zsh"
+export ZSH="/Users/aostepanov/.oh-my-zsh"
 plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
@@ -25,6 +25,7 @@ export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
 export CMAKE_PREFIX_PATH=/usr/local/opt/qt5/
+export TERM='xterm-256color'
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PATH="$PATH:~/.dotnet/tools"

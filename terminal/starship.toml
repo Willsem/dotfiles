@@ -31,3 +31,6 @@ symbol = '󰎙 '
 
 [lua]
 symbol = ' '
+
+[php]
+symbol = ' '
