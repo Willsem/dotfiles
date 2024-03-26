@@ -3,10 +3,10 @@ plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 alias ls="exa --icons"
-alias l="exa -lahg --icons"
-alias ll="exa -lhg --icons"
-alias lt="exa -lahg --tree --icons"
-alias llt="exa -lhg --tree --icons"
+alias l="exa -lahg --git"
+alias ll="exa -lhg --git"
+alias lt="exa -lahg --tree --git"
+alias llt="exa -lhg --tree --git"
 alias size="du -sh * | sort -h"
 alias lg="lazygit"
 alias ssh_kitty="TERM=xterm-256color && ssh"

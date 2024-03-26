@@ -16,7 +16,7 @@ style = 'bold blue'
 format = '[$path]($style)[$read_only]($read_only_style) '
 
 [git_branch]
-symbol = ' '
+symbol = '  '
 style = 'bold green'
 
 # Disable the package module, hiding it from the prompt completely
@@ -24,13 +24,16 @@ style = 'bold green'
 disabled = true
 
 [golang]
-symbol = ' '
+symbol = '  '
 
 [nodejs]
-symbol = '󰎙 '
+symbol = '  '
 
 [lua]
-symbol = ' '
+symbol = '  '
 
 [php]
-symbol = ' '
+symbol = '  '
+
+[docker_context]
+symbol = '  '
