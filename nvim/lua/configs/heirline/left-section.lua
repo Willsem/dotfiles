@@ -1,12 +1,7 @@
-local vi_mode = require("configs.heirline.components.vi-mode")
-local git_branch = require("configs.heirline.components.git-branch")
-local git_changes = require("configs.heirline.components.git-changes")
-local diagnostics = require("configs.heirline.components.diagnostics")
-
-local alignment = require("configs.heirline.components.alignment")
-local separator = alignment.separator
+local vi_mode = require('configs.heirline.components.vi-mode')
+local git = require('configs.heirline.components.git')
 
 return {
-    vi_mode, separator, git_branch, separator, git_changes, separator,
-    diagnostics
+  vi_mode,
+  git,
 }

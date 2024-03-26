@@ -1,27 +1,23 @@
-local colors = require('vscode.colors').get_colors()
+local colors = require('catppuccin.palettes').get_palette('frappe')
 
 return {
-    git_add = colors.vscGitAdded,
-    git_del = colors.vscGitDeleted,
-    git_change = colors.vscGitModified,
+  fg = colors.text,
+  bg = colors.surface0,
 
-    git_branch = colors.vscViolet,
+  git_branch = colors.mauve,
+  git_add = colors.green,
+  git_change = colors.yellow,
+  git_del = colors.red,
 
-    scrollbar = colors.vscBlue,
+  mode_normal = colors.red,
+  mode_insert = colors.green,
+  mode_visual = colors.sapphire,
+  mode_cmd = colors.mauve,
+  mode_select = colors.yellow,
+  mode_replace = colors.peach,
+  mode_terminal = colors.mauve,
 
-    error = colors.vscRed,
-    warning = colors.vscYellow,
-    info = colors.vscBlue,
-    hint = colors.vscBlue,
+  scrollbar = colors.blue,
 
-    bg = colors.vscBack,
-    fg = colors.vscFront,
-
-    fg_light = colors.vscGray,
-
-    red = colors.vscRed,
-    green = colors.vscGreen,
-    cyan = colors.vscBlueGreen,
-    orange = colors.vscOrange,
-    purple = colors.vscViolet
+  treesitter = colors.teal,
 }
