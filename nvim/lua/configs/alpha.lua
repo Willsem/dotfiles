@@ -23,8 +23,8 @@ dashboard.section.header.val = {
   [[ ^^                                           ]],
 }
 dashboard.section.header.opts.hl = {
-  { { 'DashboardLogoPlanet', 0, 45 } },
-  { { 'DashboardLogoPlanet', 0, 45 } },
+  { { 'DashboardLogoPlanet', 0, 46 } },
+  { { 'DashboardLogoPlanet', 0, 46 } },
   { { 'DashboardLogoPlanet', 0, 45 } },
   { { 'DashboardLogoPlanet', 0, 45 } },
   { { 'DashboardLogoPlanet', 0, 45 } },
@@ -71,7 +71,9 @@ dashboard.section.header.opts.hl = {
     { 'DashboardLogoGreen', 21, 30 },
     { 'DashboardLogoPlanet', 30, 32 },
     { 'DashboardLogoGreen', 32, 45 },
-    { 'DashboardLogoBlue', 46, 91 },
+    { 'DashboardLogoBlue', 46, 50 },
+    { 'DashboardLogoPlanet', 51, 54 },
+    { 'DashboardLogoBlue', 54, 91 },
   },
   { { 'DashboardLogoPlanet', 0, 45 } },
   { { 'DashboardLogoPlanet', 0, 45 } },
