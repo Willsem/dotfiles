@@ -6,13 +6,26 @@ require('neo-tree').setup({
     icon = {
       folder_closed = '',
       folder_open = '',
-      folder_empty = ''
+      folder_empty = '',
+    },
+    git_status = {
+      symbols = {
+        added = '',
+        modified = '',
+        deleted = '',
+        renamed = '',
+        untracked = '',
+        ignored = '',
+        unstaged = '󰄱',
+        staged = '',
+        conflict = '',
+      },
     },
     indent = {
       with_markers = false,
       with_expanders = true,
       expander_collapsed = '',
-      expander_expanded = ''
+      expander_expanded = '',
     },
   },
   window = {
@@ -21,7 +34,7 @@ require('neo-tree').setup({
       ['<space>'] = false,
       ['o'] = 'open',
       ['H'] = 'prev_source',
-      ['L'] = 'next_source'
+      ['L'] = 'next_source',
     },
   },
   filesystem = {

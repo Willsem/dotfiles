@@ -8,7 +8,7 @@ return {
       if not self.once then
         vim.api.nvim_create_autocmd('ModeChanged', {
           pattern = '*:*o',
-          command = 'redrawstatus'
+          command = 'redrawstatus',
         })
         self.once = true
       end
@@ -27,7 +27,7 @@ return {
         R = 'mode_replace',
         r = 'mode_replace',
         ['!'] = 'mode_normal',
-        t = 'mode_terminal'
+        t = 'mode_terminal',
       },
       mode_text = {
         n = ' ',
@@ -42,7 +42,7 @@ return {
         R = ' ',
         r = ' ',
         ['!'] = ' ',
-        t = ' '
+        t = ' ',
       },
     },
     provider = function(self)
@@ -50,12 +50,12 @@ return {
       return self.mode_text[mode]
     end,
     hl = function(self)
-        local mode = self.mode:sub(1, 1)
-        return {
-          bg = 'bg',
-          fg = self.mode_colors[mode],
-        }
+      local mode = self.mode:sub(1, 1)
+      return {
+        bg = 'bg',
+        fg = self.mode_colors[mode],
+      }
     end,
-    update = {'ModeChanged'}
-  }
+    update = { 'ModeChanged' },
+  },
 }

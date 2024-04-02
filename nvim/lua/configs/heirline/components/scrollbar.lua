@@ -2,6 +2,14 @@ local alignment = require('configs.heirline.components.alignment')
 
 return {
   {
+    provider = '%P',
+    hl = {
+      bg = 'bg',
+      fg = 'fg',
+    },
+  },
+  alignment.space,
+  {
     static = {
       sbar = { '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█' },
     },
@@ -11,7 +19,7 @@ return {
       local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
       return string.rep(self.sbar[i], 2)
     end,
-    hl = {fg = 'scrollbar', bg = 'bg'}
+    hl = { fg = 'scrollbar', bg = 'bg' },
   },
   alignment.space,
 }

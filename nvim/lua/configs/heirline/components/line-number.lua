@@ -8,5 +8,5 @@ return {
       fg = 'fg',
     },
   },
-  alignment.space,
+  alignment.separator,
 }

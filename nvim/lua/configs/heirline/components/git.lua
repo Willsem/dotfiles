@@ -8,6 +8,5 @@ return {
   condition = conditions.is_git_repo,
   alignment.separator,
   git_branch,
-  alignment.space,
   git_changes,
 }

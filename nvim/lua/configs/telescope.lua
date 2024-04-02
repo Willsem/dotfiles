@@ -13,7 +13,7 @@ require('telescope').setup({
       },
       n = {
         ['q'] = actions.close,
-      }
+      },
     },
     layout_config = {
       horizontal = {

@@ -14,9 +14,9 @@ return {
     },
   },
   separator = {
-    provider = '  ',
+    provider = ' | ',
     hl = {
-      fg = 'fg',
+      fg = 'separator',
       bg = 'bg',
     },
   },

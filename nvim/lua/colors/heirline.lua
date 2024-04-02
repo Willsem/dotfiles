@@ -4,6 +4,8 @@ return {
   fg = colors.text,
   bg = colors.surface0,
 
+  separator = colors.overlay0,
+
   git_branch = colors.mauve,
   git_add = colors.green,
   git_change = colors.yellow,
@@ -20,4 +22,12 @@ return {
   scrollbar = colors.blue,
 
   treesitter = colors.teal,
+
+  error = colors.red,
+  warning = colors.yellow,
+  info = colors.sky,
+  hint = colors.teal,
+
+  modified = colors.green,
+  file_locked = colors.yellow,
 }
