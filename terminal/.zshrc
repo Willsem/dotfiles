@@ -2,7 +2,7 @@ export ZSH="/Users/aostepanov/.oh-my-zsh"
 plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
-alias ls="exa --icons"
+alias ls="exa"
 alias l="exa -lahg --git"
 alias ll="exa -lhg --git"
 alias lt="exa -lahg --tree --git"
@@ -11,9 +11,9 @@ alias size="du -sh * | sort -h"
 alias lg="lazygit"
 alias ssh_kitty="TERM=xterm-256color && ssh"
 
-alias n="nvim"
-alias vi="nvim"
-alias vim="nvim"
+alias n="TERM=wezterm nvim"
+alias vi="TERM=wezterm nvim"
+alias vim="TERM=wezterm nvim"
 
 export EMACS="*term*"
 
