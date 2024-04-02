@@ -62,7 +62,7 @@ local FileFlags = {
     end,
     alignment.space,
     {
-      provider = '',
+      provider = '',
       hl = {
         fg = 'file_locked',
         bg = 'bg',
