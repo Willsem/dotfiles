@@ -9,12 +9,11 @@ config.color_scheme = 'Catppuccin Frappe'
 
 -- Setup font
 config.font = wezterm.font_with_fallback({
+  { family = 'Cascadia Code' },
   { family = 'nonicons', scale = 0.95 },
-  { family = 'VictorMono Nerd Font', weight = 'Bold' },
 })
-config.font_size = 16.0
-config.cell_width = 0.6
-config.line_height = 1.55
+config.font_size = 17.0
+config.line_height = 1.2
 
 -- Disable window decorations
 config.enable_tab_bar = false
