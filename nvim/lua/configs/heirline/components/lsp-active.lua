@@ -10,7 +10,7 @@ return {
       for _, server in pairs(vim.lsp.get_clients()) do
         table.insert(names, server.name)
       end
-      return ' ' .. table.concat(names, ' ')
+      return ' ' .. table.concat(names, ' ')
     end,
     hl = {
       fg = 'fg',
