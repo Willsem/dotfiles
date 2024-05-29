@@ -19,6 +19,9 @@ format = '[$path]($style)[$read_only]($read_only_style) '
 symbol = ' '
 style = 'bold green'
 
+[battery]
+disabled = true
+
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
