@@ -3,12 +3,12 @@ local P = { groups = {}, mappings = { n = {}, v = {} } }
 local telescope_builtin = require('telescope.builtin')
 
 P.groups = {
-  { prefix = '<leader>f', name = ' Find' },
-  { prefix = '<leader>l', name = ' LSP' },
-  { prefix = '<leader>p', name = ' Plugin manager (Lazy)' },
-  { prefix = '<leader>g', name = ' Git' },
-  { prefix = '<leader>t', name = ' Tests' },
-  { prefix = '<leader>m', name = ' Mason' },
+  { prefix = '<leader>f', name = 'Find' },
+  { prefix = '<leader>l', name = 'LSP' },
+  { prefix = '<leader>p', name = 'Plugin manager (Lazy)' },
+  { prefix = '<leader>g', name = 'Git' },
+  { prefix = '<leader>t', name = 'Tests' },
+  { prefix = '<leader>m', name = 'Mason' },
 }
 
 P.mappings.n['<leader>h'] = {

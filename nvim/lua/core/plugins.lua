@@ -177,4 +177,12 @@ return {
       require('configs.barbecue')
     end,
   },
+
+  {
+    'codota/tabnine-nvim',
+    build = './dl_binaries.sh',
+    config = function()
+      require('configs.tabnine')
+    end,
+  },
 }
