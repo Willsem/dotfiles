@@ -58,6 +58,9 @@ return {
   {
     'folke/which-key.nvim',
     event = 'VeryLazy',
+    dependencies = {
+      'echasnovski/mini.icons',
+    },
     config = function()
       require('configs.which-key')
     end,
