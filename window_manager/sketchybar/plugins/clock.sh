@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sketchybar --set $NAME icon="" label="$(date '+%H:%M')"
+sketchybar --set $NAME icon="" label="$(LC_ALL=ru_RU.UTF-8 date '+%H:%M')"
