@@ -1,26 +1,19 @@
-require('mason-lspconfig').setup()
-
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local navic = require('nvim-navic')
 
-require('mason-lspconfig').setup_handlers({
-  function(server_name)
-    local settings = {}
+require('mason-lspconfig').setup()
 
-    if server_name == 'lua_ls' then
-      settings = require('configs.lspconfig.lua-ls')
+vim.lsp.config('*', {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    if client.server_capabilities.documentSymbolProvider then
+      navic.attach(client, bufnr)
     end
-
-    settings.capabilities = capabilities
-    settings.on_attach = function(client, bufnr)
-      if client.server_capabilities.documentSymbolProvider then
-        navic.attach(client, bufnr)
-      end
-    end
-
-    require('lspconfig')[server_name].setup(settings)
   end,
 })
+
+vim.lsp.config('lua_ls', require('configs.lspconfig.lua-ls'))
+require('configs.lspconfig.brief-ls')
 
 local signs = {
   Error = ' ',

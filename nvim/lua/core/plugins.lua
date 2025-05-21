@@ -118,10 +118,10 @@ return {
   },
 
   {
-    'williamboman/mason-lspconfig.nvim',
+    'mason-org/mason-lspconfig.nvim',
     dependencies = {
       {
-        'williamboman/mason.nvim',
+        'mason-org/mason.nvim',
         config = function()
           require('configs.mason')
         end,
@@ -182,10 +182,9 @@ return {
   },
 
   {
-    'codota/tabnine-nvim',
-    build = './dl_binaries.sh',
+    'rest-nvim/rest.nvim',
     config = function()
-      require('configs.tabnine')
+      require('configs.rest-nvim')
     end,
   },
 }

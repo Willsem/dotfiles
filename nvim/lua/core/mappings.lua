@@ -9,6 +9,7 @@ P.groups = {
   { prefix = '<leader>g', name = 'Git' },
   { prefix = '<leader>t', name = 'Tests' },
   { prefix = '<leader>m', name = 'Mason' },
+  { prefix = '<leader>r', name = 'HTTP' },
 }
 
 P.mappings.n['<leader>h'] = {
@@ -196,6 +197,12 @@ P.mappings.n['<leader>mo'] = {
 P.mappings.n['<leader>mu'] = {
   desc = 'Update mason',
   cmd = '<cmd>MasonUpdate<cr>',
+}
+
+-- HTTP group
+P.mappings.n['<leader>rr'] = {
+  desc = 'HTTP Request run',
+  cmd = '<cmd>Rest run<cr>',
 }
 
 return P
