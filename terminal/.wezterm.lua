@@ -9,7 +9,7 @@ config.color_scheme = "Catppuccin Frappe"
 
 -- Setup font
 config.font = wezterm.font_with_fallback({
-	{ family = "SF Mono" },
+	{ family = "SF Mono", weight = "Medium" },
 	{ family = "nonicons", scale = 0.95 },
 })
 config.font_size = 16.0
