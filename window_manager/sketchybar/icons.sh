@@ -1,0 +1,11 @@
+export ICON_APPLE=""
+export ICON_PREFERENCES=""
+export ICON_ACTIVITY=""
+export ICON_LOCK=""
+
+export ICON_BATTERY1=""
+export ICON_BATTERY2=""
+export ICON_BATTERY3=""
+export ICON_BATTERY4=""
+export ICON_BATTERY5=""
+export ICON_CHARGING=""

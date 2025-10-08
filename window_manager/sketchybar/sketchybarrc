@@ -1,68 +1,68 @@
+COMPONENTS="$CONFIG_DIR/components"
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
+source ./colors.sh
+source ./icons.sh
+
 bar=(
-  height=36
-  color=0x40000000
+  height=32
+  color=$BACKGROUND_COLOR
   position=top
   padding_right=15
   padding_left=15
   corner_radius=0
   y_offset=0
   margin=0
-  blur_radius=30
-  notch_width=0
+  blur_radius=20
+  notch_width=188
 )
 
 sketchybar --bar "${bar[@]}"
 
 default=(
-  padding_left=5
-  padding_right=5
-  icon.font="CaskaydiaCove Nerd Font:Bold:17.0"
-  label.font="CaskaydiaCove Nerd Font:Bold:14.0"
-  icon.color=0xffffffff
-  label.color=0xffffffff
-  icon.padding_left=4
-  icon.padding_right=4
+  padding_left=8
+  padding_right=8
+  icon.font.family="CaskaydiaCove Nerd Font"
+  icon.font.size="17.0"
+  label.font.family="CaskaydiaCove Nerd Font"
+  label.font.slyle="Bold"
+  label.font.size="14.0"
+  icon.color=$TEXT_COLOR
+  label.color=$TEXT_COLOR
+  icon.padding_left=2
+  icon.padding_right=2
   label.padding_left=4
   label.padding_right=4
+  popup.background.color=$BACKGROUND_COLOR
+  popup.blur_radius=20
+  popup.background.shadow.drawing=on
 )
 sketchybar --default "${default[@]}"
 
-SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
-for i in "${!SPACE_ICONS[@]}"
-do
-  sid="$(($i+1))"
-  space=(
-    space="$sid"
-    icon="${SPACE_ICONS[i]}"
-    icon.padding_left=7
-    icon.padding_right=7
-    background.color=0x40ffffff
-    background.corner_radius=5
-    background.height=25
-    label.drawing=off
-    script="$PLUGIN_DIR/space.sh"
-    click_script="yabai -m space --focus $sid"
-  )
-  sketchybar --add space space."$sid" left --set space."$sid" "${space[@]}"
+sketchybar --add event aerospace_workspace_change
+
+for sid in $(aerospace list-workspaces --all); do
+    sketchybar --add item space.$sid left \
+        --set space.$sid script="$PLUGIN_DIR/aerospace.sh $sid" \
+        --subscribe space.$sid aerospace_workspace_change
 done
 
-sketchybar --add item chevron left \
-           --set chevron icon= label.drawing=off \
-           --add item front_app left \
+sketchybar --add item front_app left \
            --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
            --subscribe front_app front_app_switched
 
-sketchybar --add item clock right \
-           --set clock update_freq=5 script="$PLUGIN_DIR/clock.sh" \
-           --add item calendar right \
-           --set calendar update_freq=60 script="$PLUGIN_DIR/calendar.sh" \
-           --add item volume right \
+sketchybar --add item datetime right --set datetime script="$COMPONENTS/datetime.sh"
+
+sketchybar --add item volume right \
            --set volume script="$PLUGIN_DIR/volume.sh" \
            --subscribe volume volume_change \
            --add item battery right \
-           --set battery update_freq=60 script="$PLUGIN_DIR/battery.sh" \
+           --set battery update_freq=60 script="$COMPONENTS/battery.sh" \
            --subscribe battery system_woke power_source_change
+
+sketchybar --add item language right \
+           --set language script="$COMPONENTS/language.sh" \
+           --add event input_source_changed "AppleSelectedInputSourcesChangedNotification" \
+           --subscribe language input_source_changed
 
 sketchybar --update
