@@ -6,10 +6,10 @@
 
 ### Now using
 
-- Operating system - [`MacOS Ventyra`](https://www.apple.com/macos/ventura/)
+- Operating system - [`MacOS Tahoe`](https://www.apple.com/os/macos/)
 - Spotlight replacement - [`Raycast`](https://www.raycast.com/)
-- Window manager - Build-in [`Raycast`](https://www.raycast.com/) window manager
-- Font - [`VictorMono Nerd Font`](./fonts/README.md)
+- Window manager - [`Aerospace`](https://github.com/nikitabobko/AeroSpace?tab=readme-ov-file)
+- Font - [`SF Mono`](./fonts/README.md) + [`nonicons`](https://github.com/ya2s/nonicons)
 - Terminal emulator - [`WezTerm`](https://wezfurlong.org/wezterm/)
 - Terminal multiplexer - [`tmux`](https://github.com/tmux/tmux)
 - Shell - [`zsh`](https://www.zsh.org) + [`starship`](https://starship.rs)
