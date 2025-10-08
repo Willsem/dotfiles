@@ -2,11 +2,11 @@ export ZSH="/Users/aostepanov/.oh-my-zsh"
 plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
-alias ls="eza"
-alias l="eza -lahg --git"
-alias ll="eza -lhg --git"
-alias lt="eza -lahg --tree --git"
-alias llt="eza -lhg --tree --git"
+alias ls="eza --icons"
+alias l="eza -lahg --git --icons"
+alias ll="eza -lhg --git --icons"
+alias lt="eza -lahg --tree --git --icons"
+alias llt="eza -lhg --tree --git --icons"
 alias size="du -sh * | sort -h"
 alias lg="lazygit"
 alias ssh_kitty="TERM=xterm-256color && ssh"
