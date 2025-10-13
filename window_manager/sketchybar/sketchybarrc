@@ -1,68 +1,18 @@
-COMPONENTS="$CONFIG_DIR/components"
-PLUGIN_DIR="$CONFIG_DIR/plugins"
+#!/usr/bin/env lua
 
-source ./colors.sh
-source ./icons.sh
-
-bar=(
-  height=32
-  color=$BACKGROUND_COLOR
-  position=top
-  padding_right=15
-  padding_left=15
-  corner_radius=0
-  y_offset=0
-  margin=0
-  blur_radius=20
-  notch_width=188
+-- Install or update the sketchybar module
+os.execute(
+	"[ ! -d $HOME/.local/share/sketchybar_lua/ ] && (git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)"
 )
 
-sketchybar --bar "${bar[@]}"
+-- Add the sketchybar module to the package cpath
+package.cpath = package.cpath .. ";/Users/" .. os.getenv("USER") .. "/.local/share/sketchybar_lua/?.so"
 
-default=(
-  padding_left=8
-  padding_right=8
-  icon.font.family="CaskaydiaCove Nerd Font"
-  icon.font.size="17.0"
-  label.font.family="CaskaydiaCove Nerd Font"
-  label.font.slyle="Bold"
-  label.font.size="14.0"
-  icon.color=$TEXT_COLOR
-  label.color=$TEXT_COLOR
-  icon.padding_left=2
-  icon.padding_right=2
-  label.padding_left=4
-  label.padding_right=4
-  popup.background.color=$BACKGROUND_COLOR
-  popup.blur_radius=20
-  popup.background.shadow.drawing=on
-)
-sketchybar --default "${default[@]}"
+sbar = require("sketchybar")
 
-sketchybar --add event aerospace_workspace_change
+sbar.begin_config()
+require("init")
+sbar.hotload(true)
+sbar.end_config()
 
-for sid in $(aerospace list-workspaces --all); do
-    sketchybar --add item space.$sid left \
-        --set space.$sid script="$PLUGIN_DIR/aerospace.sh $sid" \
-        --subscribe space.$sid aerospace_workspace_change
-done
-
-sketchybar --add item front_app left \
-           --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
-           --subscribe front_app front_app_switched
-
-sketchybar --add item datetime right --set datetime script="$COMPONENTS/datetime.sh"
-
-sketchybar --add item volume right \
-           --set volume script="$PLUGIN_DIR/volume.sh" \
-           --subscribe volume volume_change \
-           --add item battery right \
-           --set battery update_freq=60 script="$COMPONENTS/battery.sh" \
-           --subscribe battery system_woke power_source_change
-
-sketchybar --add item language right \
-           --set language script="$COMPONENTS/language.sh" \
-           --add event input_source_changed "AppleSelectedInputSourcesChangedNotification" \
-           --subscribe language input_source_changed
-
-sketchybar --update
+sbar.event_loop()

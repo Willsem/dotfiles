@@ -1,8 +1,0 @@
-#!/bin/sh
-
-clock=(
-  icon.drawing=off
-  label="$(LC_ALL=ru_RU.UTF-8 date '+%a, %d %B %H:%M')"
-)
-
-sketchybar --set $NAME "${clock[@]}"
