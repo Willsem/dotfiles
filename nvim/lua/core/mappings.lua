@@ -161,34 +161,6 @@ P.mappings.v['<leader>/'] = {
   cmd = "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
 }
 
---[[
--- Tests group
-local neotest = require('neotest')
-local neotest_run = neotest.run
-local neotest_watch = neotest.watch
-local neotest_summary = neotest.summary
-P.mappings.n['<leader>tr'] = {
-  desc = 'Run the nearest test',
-  cmd = neotest_run.run
-}
-P.mappings.n['<leader>tR'] = {
-  desc = 'Run the current file',
-  cmd = function() neotest_run.run(vim.fn.expand('%')) end
-}
-P.mappings.n['<leader>ts'] = {
-  desc = 'Stop the nearest test',
-  cmd = neotest_run.stop
-}
-P.mappings.n['<leader>tw'] = {
-  desc = 'Watch the tests',
-  cmd = neotest_watch.toggle
-}
-P.mappings.n['<leader>to'] = {
-  desc = 'Open tests summary',
-  cmd = neotest_summary.open
-}
---]]
-
 -- Mason group
 P.mappings.n['<leader>mo'] = {
   desc = 'Open mason window',
