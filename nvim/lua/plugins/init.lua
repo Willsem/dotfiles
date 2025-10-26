@@ -17,7 +17,9 @@ return {
   require('plugins.mason'),
   require('plugins.cmp'),
   require('plugins.null-ls'),
-  require('plugins.barbecue'),
+  require('plugins.dropbar'),
   require('plugins.rest'),
   require('plugins.dbee'),
+  require('plugins.scrollbar'),
+  require('plugins.hlslens'),
 }

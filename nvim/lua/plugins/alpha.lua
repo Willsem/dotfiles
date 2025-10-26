@@ -9,6 +9,23 @@ return {
     vim.api.nvim_set_hl(0, 'DashboardLogoGreen', { fg = colors.green })
     vim.api.nvim_set_hl(0, 'DashboardLogoPlanet', { fg = colors.planet })
 
+    local stats = require('lazy').stats()
+    local v = vim.version()
+
+    local maxVersionLen = 10
+    local versionLen = 2 + (v.major >= 10 and 2 or 1) + 1 + (v.minor >= 10 and 2 or 1) + 1 + (v.patch >= 10 and 2 or 1)
+    local needSpacesVersionString = maxVersionLen - versionLen
+    local versionString = string.rep(' ', needSpacesVersionString / 2)
+      .. string.format(' %d.%d.%d', v.major, v.minor, v.patch)
+      .. string.rep(' ', needSpacesVersionString / 2 + needSpacesVersionString % 2)
+
+    local maxPluginsLoadedLen = 13
+    local pluginsLoadedLen = 2 + (stats.count >= 100 and 3 or (stats.count >= 10 and 2 or 1)) + 8
+    local needSpacesPluginsLoaded = maxPluginsLoadedLen - pluginsLoadedLen
+    local pluginsLoadedString = string.rep(' ', needSpacesPluginsLoaded / 2)
+      .. string.format(' %d plugins', stats.count)
+      .. string.rep(' ', needSpacesPluginsLoaded / 2 + needSpacesPluginsLoaded % 2)
+
     dashboard.section.header.val = {
       [[                                         _.oo.]],
       [[                 _.u[[/;:,.         .odMMMMMM']],
@@ -25,7 +42,11 @@ return {
       [[ dMMMMMMM@^`       `^^^^                      ]],
       [[YMMMUP^                                       ]],
       [[ ^^                                           ]],
+      [[                                              ]],
+      string.format('        ╭─        %s        ─╮        ', versionString),
+      string.format('        ╰─       %s      ─╯        ', pluginsLoadedString),
     }
+
     dashboard.section.header.opts.hl = {
       { { 'DashboardLogoPlanet', 0, 46 } },
       { { 'DashboardLogoPlanet', 0, 46 } },
@@ -84,21 +105,26 @@ return {
       { { 'DashboardLogoPlanet', 0, 45 } },
       { { 'DashboardLogoPlanet', 0, 45 } },
       { { 'DashboardLogoPlanet', 0, 45 } },
+      { { 'DashboardLogoPlanet', 0, 45 } },
+      { { 'DashboardLogoBlue', 0, 53 } },
+      { { 'DashboardLogoBlue', 0, 53 } },
     }
 
-    local stats = require('lazy').stats()
-    local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-    local v = vim.version()
-    dashboard.section.footer.val =
-      string.format(' %d.%d.%d  󰂖 %d plugins loaded in %d ms', v.major, v.minor, v.patch, stats.count, ms)
-
     dashboard.section.buttons.val = {
-      dashboard.button('e', '  New file', ':ene <BAR> startinsert <CR>'),
+      dashboard.button('e', '  New file', ':ene <BAR> startinsert <CR>'),
       dashboard.button('SPC f o', '󰈚  Recent Files', ':Telescope oldfiles<CR>'),
       dashboard.button('SPC f f', '  Find File', ':Telescope find_files<CR>'),
       dashboard.button('SPC f w', '  Find Word', ':Telescope live_grep<CR>'),
-      dashboard.button('q', '󰗼  Quit NVIM', ':qa<CR>'),
+      dashboard.button('q', '  Quit nvim', ':qa<CR>'),
     }
+
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'LazyVimStarted',
+      callback = function()
+        dashboard.section.footer.val = string.format(' startup time: %d ms', stats.startuptime)
+        pcall(vim.cmd.AlphaRedraw)
+      end,
+    })
 
     require('alpha').setup(dashboard.config)
   end,

@@ -177,4 +177,39 @@ P.mappings.n['<leader>rr'] = {
   cmd = '<cmd>Rest run<cr>',
 }
 
+-- Search
+P.mappings.n['n'] = {
+  cmd = [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
+}
+P.mappings.n['N'] = {
+  cmd = [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
+}
+P.mappings.n['*'] = {
+  cmd = [[*<Cmd>lua require('hlslens').start()<CR>]],
+}
+P.mappings.n['#'] = {
+  cmd = [[#<Cmd>lua require('hlslens').start()<CR>]],
+}
+P.mappings.n['g*'] = {
+  cmd = [[g*<Cmd>lua require('hlslens').start()<CR>]],
+}
+P.mappings.n['g#'] = {
+  cmd = [[g#<Cmd>lua require('hlslens').start()<CR>]],
+}
+
+-- Dropbar
+local dropbar_api = require('dropbar.api')
+P.mappings.n['<leader>;'] = {
+  cmd = dropbar_api.pick,
+  desc = 'Pick symbols in winbar',
+}
+P.mappings.n['[;'] = {
+  cmd = dropbar_api.goto_context_start,
+  desc = 'Go to start of current context',
+}
+P.mappings.n['];'] = {
+  cmd = dropbar_api.select_next_context,
+  desc = 'Select next context',
+}
+
 return P
