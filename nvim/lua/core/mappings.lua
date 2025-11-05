@@ -8,7 +8,7 @@ P.groups = {
   { prefix = '<leader>p', name = 'Plugin manager (Lazy)' },
   { prefix = '<leader>g', name = 'Git' },
   { prefix = '<leader>t', name = 'Tests' },
-  { prefix = '<leader>m', name = 'Mason' },
+  { prefix = '<leader>m', name = 'Markdown' },
   { prefix = '<leader>r', name = 'HTTP' },
 }
 
@@ -104,37 +104,48 @@ P.mappings.n['<leader>fh'] = {
   cmd = telescope_builtin.help_tags,
 }
 
+-- vim.keymap.set('n', 'gt', '<cmd>LspUI type_definition<CR>')
+-- vim.keymap.set('n', '<leader>ci', '<cmd>LspUI call_hierarchy incoming_calls<CR>')
+-- vim.keymap.set('n', '<leader>co', '<cmd>LspUI call_hierarchy outgoing_calls<CR>')
+
 -- LSP group
 P.mappings.n['<leader>ld'] = {
   desc = 'Go to definition',
-  cmd = vim.lsp.buf.definition,
+  cmd = '<cmd>LspUI definition<CR>',
 }
 P.mappings.n['gd'] = P.mappings.n['<leader>ld']
 
 P.mappings.n['<leader>lD'] = {
   desc = 'Go to declaration',
-  cmd = vim.lsp.buf.declaration,
+  cmd = '<cmd>LspUI declaration<CR>',
 }
 P.mappings.n['gD'] = P.mappings.n['<leader>lD']
 
 P.mappings.n['<leader>li'] = {
   desc = 'Go to implementation',
-  cmd = vim.lsp.buf.implementation,
+  cmd = '<cmd>LspUI implementation<CR>',
 }
 P.mappings.n['gi'] = P.mappings.n['<leader>li']
 
 P.mappings.n['<leader>la'] = {
   desc = 'Code actions',
-  cmd = vim.lsp.buf.code_action,
+  cmd = '<cmd>LspUI code_action<CR>',
 }
 P.mappings.n['<leader>lr'] = {
   desc = 'Go to references',
-  cmd = vim.lsp.buf.references,
+  cmd = '<cmd>LspUI reference<CR>',
 }
 P.mappings.n['gr'] = P.mappings.n['<leader>lr']
 
-P.mappings.n['<leader>lR'] = { desc = 'Rename symbol', cmd = vim.lsp.buf.rename }
-P.mappings.n['<leader>lh'] = { desc = 'LSP hover', cmd = vim.lsp.buf.hover }
+P.mappings.n['<leader>lR'] = {
+  desc = 'Rename symbol',
+  cmd = '<cmd>LspUI rename<CR>',
+}
+
+P.mappings.n['<leader>lh'] = {
+  desc = 'LSP hover',
+  cmd = '<cmd>LspUI hover<CR>',
+}
 
 -- Plugin manager group
 local lazy = require('lazy')
@@ -161,14 +172,15 @@ P.mappings.v['<leader>/'] = {
   cmd = "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
 }
 
--- Mason group
+-- Markdown group
+local peek = require('peek')
 P.mappings.n['<leader>mo'] = {
-  desc = 'Open mason window',
-  cmd = '<cmd>Mason<cr>',
+  desc = 'Open peek previewer',
+  cmd = peek.open,
 }
-P.mappings.n['<leader>mu'] = {
-  desc = 'Update mason',
-  cmd = '<cmd>MasonUpdate<cr>',
+P.mappings.n['<leader>mc'] = {
+  desc = 'Close peek previewer',
+  cmd = peek.close,
 }
 
 -- HTTP group

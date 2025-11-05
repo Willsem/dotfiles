@@ -40,6 +40,13 @@ return {
       mappings = {
         ['<space>'] = false,
         ['o'] = 'open',
+        ['oc'] = 'noop',
+        ['od'] = 'noop',
+        ['og'] = 'noop',
+        ['om'] = 'noop',
+        ['on'] = 'noop',
+        ['os'] = 'noop',
+        ['ot'] = 'noop',
         ['H'] = 'prev_source',
         ['L'] = 'next_source',
       },
