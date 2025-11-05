@@ -13,7 +13,7 @@ config.font = wezterm.font_with_fallback({
 	{ family = "nonicons", scale = 0.95 },
 })
 config.font_size = 16.0
-config.line_height = 1.3
+config.line_height = 1.1
 config.cell_width = 0.95
 
 -- Disable window decorations
