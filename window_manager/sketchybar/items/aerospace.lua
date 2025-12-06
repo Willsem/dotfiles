@@ -15,7 +15,7 @@ local function space_change(env)
 	end
 
 	sbar.exec("aerospace list-windows --workspace " .. num .. " --format '%{app-name}'", function(result, code)
-		local label = num
+		local label = icons.windows[tostring(num)]
 		for s in result:gmatch("[^\r\n]+") do
 			local icon = icons.apps[s]
 			if icon ~= nil then
@@ -41,7 +41,7 @@ for i = 1, 10, 1 do
 	local item = sbar.add("item", {
 		position = "left",
 		label = {
-			string = i,
+			string = icons.windows[tostring(i)],
 			padding_left = 8,
 			padding_right = 8,
 		},
