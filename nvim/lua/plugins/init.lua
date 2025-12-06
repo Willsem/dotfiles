@@ -18,10 +18,11 @@ return {
   require('plugins.cmp'),
   require('plugins.null-ls'),
   require('plugins.dropbar'),
-  require('plugins.lsp-ui'),
+  require('plugins.lspsaga'),
   require('plugins.rest'),
   require('plugins.dbee'),
   require('plugins.scrollbar'),
   require('plugins.hlslens'),
   require('plugins.markdown'),
+  require('plugins.markview'),
 }

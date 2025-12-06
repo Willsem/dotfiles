@@ -21,6 +21,10 @@ return {
       end,
     })
 
+    vim.diagnostic.config({
+      virtual_text = true,
+    })
+
     vim.lsp.config('lua_ls', require('plugins.lspconfig.lua-ls'))
     require('plugins.lspconfig.brief-ls')
 

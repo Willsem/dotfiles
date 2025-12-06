@@ -1,33 +1,31 @@
-local colors = require('catppuccin.palettes').get_palette('frappe')
-
 return {
-  fg = colors.text,
-  bg = colors.surface0,
+  fg = '#cdcdcd',
+  bg = '#252530',
 
-  separator = colors.overlay0,
+  separator = '#d7d7d7',
 
-  git_branch = colors.mauve,
-  git_add = colors.green,
-  git_change = colors.yellow,
-  git_del = colors.red,
+  git_branch = '#bb9dbd',
+  git_add = '#7fa563',
+  git_change = '#f3be7c',
+  git_del = '#d8647e',
 
-  mode_normal = colors.red,
-  mode_insert = colors.green,
-  mode_visual = colors.sapphire,
-  mode_cmd = colors.mauve,
-  mode_select = colors.yellow,
-  mode_replace = colors.peach,
-  mode_terminal = colors.mauve,
+  mode_normal = '#d8647e',
+  mode_insert = '#7fa563',
+  mode_visual = '#8ba9c1',
+  mode_cmd = '#bb9dbd',
+  mode_select = '#f3be7c',
+  mode_replace = '#f5cb96',
+  mode_terminal = '#bb9dbd',
 
-  scrollbar = colors.blue,
+  scrollbar = '#6e94b2',
 
-  treesitter = colors.teal,
+  treesitter = '#99b782',
 
-  error = colors.red,
-  warning = colors.yellow,
-  info = colors.sky,
-  hint = colors.teal,
+  error = '#d8647e',
+  warning = '#f3be7c',
+  info = '#8ba9c1',
+  hint = '#99b782',
 
-  modified = colors.green,
-  file_locked = colors.yellow,
+  modified = '#7fa563',
+  file_locked = '#f3be7c',
 }

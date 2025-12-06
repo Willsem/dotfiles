@@ -111,7 +111,7 @@ P.mappings.n['<leader>fh'] = {
 -- LSP group
 P.mappings.n['<leader>ld'] = {
   desc = 'Go to definition',
-  cmd = '<cmd>LspUI definition<CR>',
+  cmd = '<cmd>Lspsaga goto_definition<CR>',
 }
 P.mappings.n['gd'] = P.mappings.n['<leader>ld']
 
@@ -123,28 +123,28 @@ P.mappings.n['gD'] = P.mappings.n['<leader>lD']
 
 P.mappings.n['<leader>li'] = {
   desc = 'Go to implementation',
-  cmd = '<cmd>LspUI implementation<CR>',
+  cmd = '<cmd>Lspsaga finder imp<CR>',
 }
 P.mappings.n['gi'] = P.mappings.n['<leader>li']
 
 P.mappings.n['<leader>la'] = {
   desc = 'Code actions',
-  cmd = '<cmd>LspUI code_action<CR>',
+  cmd = '<cmd>Lspsaga code_action<CR>',
 }
 P.mappings.n['<leader>lr'] = {
   desc = 'Go to references',
-  cmd = '<cmd>LspUI reference<CR>',
+  cmd = '<cmd>Lspsaga finder ref<CR>',
 }
 P.mappings.n['gr'] = P.mappings.n['<leader>lr']
 
 P.mappings.n['<leader>lR'] = {
   desc = 'Rename symbol',
-  cmd = '<cmd>LspUI rename<CR>',
+  cmd = '<cmd>Lspsaga rename<CR>',
 }
 
 P.mappings.n['<leader>lh'] = {
   desc = 'LSP hover',
-  cmd = '<cmd>LspUI hover<CR>',
+  cmd = '<cmd>Lspsaga hover_doc<CR>',
 }
 
 -- Plugin manager group
@@ -222,6 +222,11 @@ P.mappings.n['[;'] = {
 P.mappings.n['];'] = {
   cmd = dropbar_api.select_next_context,
   desc = 'Select next context',
+}
+
+P.mappings.n['<leader>tt'] = {
+  desc = 'Toggle terminal',
+  cmd = '<cmd>Lspsaga term_toggle<cr>',
 }
 
 return P

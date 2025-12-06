@@ -1,7 +1,5 @@
-local colors = require('catppuccin.palettes').get_palette('frappe')
-
 return {
-  green = colors.teal,
-  blue = colors.blue,
-  planet = colors.peach,
+  green = '#7fa563',
+  blue = '#6e94b2',
+  planet = '#f5cb96',
 }
