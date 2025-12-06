@@ -21,6 +21,8 @@ export PATH=$PATH:/usr/local/opt/llvm/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/usr/local/opt/libpq/bin
 
+export GOROOT="$(brew --prefix golang)/libexec"
+
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
