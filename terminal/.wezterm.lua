@@ -8,8 +8,9 @@ end
 config.font = wezterm.font_with_fallback({
 	{ family = "SF Mono", weight = "Medium" },
 	{ family = "nonicons", scale = 0.95 },
+	{ family = "CaskaydiaCove Nerd Font" },
 })
-config.font_size = 18.0
+config.font_size = 20.0
 config.line_height = 1.1
 config.cell_width = 0.9
 

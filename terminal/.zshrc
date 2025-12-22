@@ -20,6 +20,10 @@ export EMACS="*term*"
 export PATH=$PATH:/usr/local/opt/llvm/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/usr/local/opt/libpq/bin
+export PATH=$PATH:~/.dotnet/tools
+export PATH=$PATH:~/.local/bin
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:~/.flutter/bin
 
 export GOROOT="$(brew --prefix golang)/libexec"
 
@@ -30,24 +34,15 @@ export CMAKE_PREFIX_PATH=/usr/local/opt/qt5/
 export TERM='xterm-256color'
 export EDITOR='nvim'
 export VISUAL='nvim'
-export PATH="$PATH:~/.dotnet/tools"
-export PATH="$PATH:~/.local/bin"
 export GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:~/.flutter/bin
 export NVM_DIR="$HOME/.nvm"
 
 eval "$(starship init zsh)"
 
-# pnpm
-export PNPM_HOME="/Users/a.o.stepanov/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
 [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
-. "/Users/aostepanov/.deno/env"
+source "/Users/aostepanov/.deno/env"
+source $HOME/.cargo/env
+
+source ~/.local/share/bob/env/env.sh
