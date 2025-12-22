@@ -1,5 +1,6 @@
 if vim.g.vscode then
-  require('core.options')
+    require('core.options')
 else
-  require('core')
+    require('core')
+    require('ui')
 end
