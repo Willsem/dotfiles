@@ -153,9 +153,9 @@ local function center_lines(lines, colors)
 end
 
 local function setup_mappings(buf)
-    -- [n]ew file   [e]xplorer  [f]ind files  │ ]],
-    -- find [w]ords  [r]ecent    [s]ettings   │ ]],
-    --               [q]uit                   │ ]],
+    -- [n]ew file   [e]xplorer  [f]ind files
+    -- find [w]ords  [r]ecent    [s]ettings
+    --               [q]uit
 
     vim.keymap.set('n', 'n', function()
         vim.cmd('enew')
@@ -184,8 +184,8 @@ local function dashboard()
     end
 
     local buf = vim.api.nvim_create_buf(false, true)
-    local ns_id = vim.api.nvim_create_namespace('color_namespace')
 
+    local ns_id = vim.api.nvim_create_namespace('color_namespace')
     local lines, colors = generate_lines()
     lines, colors = center_lines(lines, colors)
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
@@ -199,6 +199,7 @@ local function dashboard()
 
     vim.api.nvim_set_option_value('modifiable', false, { buf = buf })
     vim.api.nvim_set_option_value('filetype', 'dashboard', { buf = buf })
+    vim.api.nvim_buf_set_name(buf, 'dashboard')
 
     vim.api.nvim_win_set_buf(0, buf)
     vim.opt_local.number = false

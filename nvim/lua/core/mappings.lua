@@ -106,3 +106,15 @@ end)
 map('n', '|', function()
     vim.cmd('vsplit')
 end)
+
+map('n', 'YY', function()
+    vim.cmd('normal "+yy')
+end)
+
+map('v', 'Y', function()
+    vim.cmd('normal "+y')
+end)
+
+map({ 'n', 'v' }, 'P', function()
+    vim.cmd('normal "+p')
+end)

@@ -23,17 +23,15 @@ function BufferLine.show()
             local filetype = vim.api.nvim_get_option_value('filetype', { buf = buf })
             local name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ':t')
 
-            if name ~= '' then
-                if names[name] > 1 then
-                    name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ':h:t') .. '/' .. name
-                end
+            if names[name] > 1 then
+                name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ':h:t') .. '/' .. name
+            end
 
-                local icon, icon_hl = icons.get_icon(name, filetype, { default = true })
-                if buf == current then
-                    line = line .. '%#TabLineSel#▎%#' .. icon_hl .. '#' .. icon .. ' %#TabLineSel#' .. name .. ' '
-                else
-                    line = line .. '%#TabLineSep#▎%#' .. icon_hl .. '#' .. icon .. ' %#TabLine#' .. name .. ' '
-                end
+            local icon, icon_hl = icons.get_icon(name, filetype, { default = true })
+            if buf == current then
+                line = line .. '%#TabLineSel#▎%#' .. icon_hl .. '#' .. icon .. ' %#TabLineSel#' .. name .. ' '
+            else
+                line = line .. '%#TabLineSep#▎%#' .. icon_hl .. '#' .. icon .. ' %#TabLine#' .. name .. ' '
             end
         end
     end
