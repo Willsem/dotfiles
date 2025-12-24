@@ -115,6 +115,6 @@ map('v', 'Y', function()
     vim.cmd('normal "+y')
 end)
 
-map({ 'n', 'v' }, 'P', function()
+map({ 'n', 'v' }, '<C-p>', function()
     vim.cmd('normal "+p')
 end)

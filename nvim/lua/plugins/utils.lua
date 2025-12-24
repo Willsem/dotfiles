@@ -9,6 +9,36 @@ return {
     },
 
     {
+        'petertriho/nvim-scrollbar',
+        opts = {
+            excluded_buftypes = {
+                'terminal',
+                'dashboard',
+            },
+            excluded_filetypes = {
+                'blink-cmp-menu',
+                'dropbar_menu',
+                'dropbar_menu_fzf',
+                'DressingInput',
+                'cmp_docs',
+                'cmp_menu',
+                'noice',
+                'prompt',
+                'TelescopePrompt',
+                'neo-tree',
+            },
+            handlers = {
+                cursor = false,
+                diagnostic = true,
+                gitsigns = true,
+                handle = true,
+                search = true,
+                ale = false,
+            },
+        },
+    },
+
+    {
         'rest-nvim/rest.nvim',
         dependencies = {
             'nvim-treesitter/nvim-treesitter',
