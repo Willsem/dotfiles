@@ -1,5 +1,5 @@
 -- Left items
-require('items.aerospace')
+require('items.spaces')
 require('items.front_app')
 
 -- Right items

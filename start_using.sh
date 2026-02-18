@@ -7,7 +7,8 @@ ln -s $pwd/nvim ~/.config
 
 # setup window manager
 ln -s $pwd/window_manager/sketchybar ~/.config
-ln -s $pwd/window_manager/.aerospace.toml ~
+ln -s $pwd/window_manager/.yabairc ~
+ln -s $pwd/window_manager/.skhdrc ~
 
 # setup terminal
 ln -s $pwd/terminal/.zshrc ~
