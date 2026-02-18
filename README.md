@@ -8,7 +8,7 @@
 
 - Operating system - [`MacOS Tahoe`](https://www.apple.com/os/macos/)
 - Spotlight replacement - [`Raycast`](https://www.raycast.com/)
-- Window manager - [`Aerospace`](https://github.com/nikitabobko/AeroSpace?tab=readme-ov-file)
+- Window manager - [`yabai`](https://github.com/asmvik/yabai) + [`skhd`](https://github.com/asmvik/skhd)
 - Font - [`SF Mono`](./fonts/README.md) + [`nonicons`](https://github.com/ya2s/nonicons)
 - Terminal emulator - [`WezTerm`](https://wezfurlong.org/wezterm/)
 - Terminal multiplexer - [`tmux`](https://github.com/tmux/tmux)
