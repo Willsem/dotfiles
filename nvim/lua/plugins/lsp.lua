@@ -12,6 +12,7 @@ return {
                 json = { 'jq' },
                 http = { 'kulala-fmt' },
                 markdown = { 'prettier' },
+                sh = { 'beautysh' },
             },
         },
     },
