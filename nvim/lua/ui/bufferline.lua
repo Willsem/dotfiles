@@ -2,6 +2,13 @@ BufferLine = {}
 
 local icons = require('nvim-web-devicons')
 
+function BufferLine.click(minwid, clicks, button, modifiers)
+    -- minwid is the "marker" we passed in the tabline - here, it's bufnr
+    if vim.api.nvim_buf_is_valid(minwid) then
+        vim.api.nvim_set_current_buf(minwid)
+    end
+end
+
 function BufferLine.show()
     local buffers = vim.api.nvim_list_bufs()
     local current = vim.api.nvim_get_current_buf()
@@ -22,17 +29,26 @@ function BufferLine.show()
         if vim.api.nvim_buf_is_loaded(buf) and vim.api.nvim_get_option_value('buflisted', { buf = buf }) then
             local filetype = vim.api.nvim_get_option_value('filetype', { buf = buf })
             local name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ':t')
+            local modified = vim.api.nvim_get_option_value('modified', { buf = buf })
 
             if names[name] > 1 then
                 name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ':h:t') .. '/' .. name
             end
 
-            local icon, icon_hl = icons.get_icon(name, filetype, { default = true })
-            if buf == current then
-                line = line .. '%#TabLineSel#▎%#' .. icon_hl .. '#' .. icon .. ' %#TabLineSel#' .. name .. ' '
-            else
-                line = line .. '%#TabLineSep#▎%#' .. icon_hl .. '#' .. icon .. ' %#TabLine#' .. name .. ' '
+            if modified then
+                name = name .. ' ●'
             end
+
+            local icon, icon_hl = icons.get_icon(name, filetype, { default = true })
+            local segment
+            if buf == current then
+                segment = '%#TabLineSel#▎%#' .. icon_hl .. '#' .. icon .. ' %#TabLineSel#' .. name .. ' '
+            else
+                segment = '%#TabLineSep#▎%#' .. icon_hl .. '#' .. icon .. ' %#TabLine#' .. name .. ' '
+            end
+
+            -- clickable area: left mouse click calls BufferLine.click with bufnr (minwid)
+            line = line .. '%' .. buf .. '@v:lua.BufferLine.click@' .. segment .. '%X'
         end
     end
 
