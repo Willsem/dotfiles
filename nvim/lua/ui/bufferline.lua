@@ -9,6 +9,12 @@ function BufferLine.click(minwid, clicks, button, modifiers)
     end
 end
 
+function BufferLine.close(minwid, clicks, button, modifiers)
+    if vim.api.nvim_buf_is_valid(minwid) then
+        vim.api.nvim_buf_delete(minwid, { force = false })
+    end
+end
+
 function BufferLine.show()
     local buffers = vim.api.nvim_list_bufs()
     local current = vim.api.nvim_get_current_buf()
@@ -49,6 +55,10 @@ function BufferLine.show()
 
             -- clickable area: left mouse click calls BufferLine.click with bufnr (minwid)
             line = line .. '%' .. buf .. '@v:lua.BufferLine.click@' .. segment .. '%X'
+
+            -- close button area (right after segment)
+            local close_segment = '  '
+            line = line .. '%' .. buf .. '@v:lua.BufferLine.close@' .. close_segment .. '%X'
         end
     end
 
