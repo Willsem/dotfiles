@@ -3,7 +3,6 @@ BufferLine = {}
 local icons = require('nvim-web-devicons')
 
 function BufferLine.click(minwid, clicks, button, modifiers)
-    -- minwid is the "marker" we passed in the tabline - here, it's bufnr
     if vim.api.nvim_buf_is_valid(minwid) then
         vim.api.nvim_set_current_buf(minwid)
     end
@@ -47,17 +46,17 @@ function BufferLine.show()
 
             local icon, icon_hl = icons.get_icon(name, filetype, { default = true })
             local segment
+            local close_segment
             if buf == current then
                 segment = '%#TabLineSel#▎%#' .. icon_hl .. '#' .. icon .. ' %#TabLineSel#' .. name .. ' '
+                close_segment = '%#TabLineCloseSel#%#TabLine# '
             else
                 segment = '%#TabLineSep#▎%#' .. icon_hl .. '#' .. icon .. ' %#TabLine#' .. name .. ' '
+                close_segment = '%#TabLineClose#%#TabLine# '
             end
 
-            -- clickable area: left mouse click calls BufferLine.click with bufnr (minwid)
             line = line .. '%' .. buf .. '@v:lua.BufferLine.click@' .. segment .. '%X'
 
-            -- close button area (right after segment)
-            local close_segment = '  '
             line = line .. '%' .. buf .. '@v:lua.BufferLine.close@' .. close_segment .. '%X'
         end
     end
