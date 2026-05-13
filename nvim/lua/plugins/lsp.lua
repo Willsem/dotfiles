@@ -19,7 +19,7 @@ return {
     },
     {
         'saghen/blink.cmp',
-        version = 'v1.8.0',
+        version = 'v1.*',
     },
     {
         'mason-org/mason.nvim',
