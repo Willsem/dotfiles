@@ -1,10 +1,48 @@
+local blink_cmp_kinds = {
+    'Text',
+    'Method',
+    'Function',
+    'Constructor',
+    'Field',
+    'Variable',
+    'Class',
+    'Interface',
+    'Module',
+    'Property',
+    'Unit',
+    'Value',
+    'Enum',
+    'Keyword',
+    'Snippet',
+    'Color',
+    'File',
+    'Reference',
+    'Folder',
+    'EnumMember',
+    'Constant',
+    'Struct',
+    'Event',
+    'Operator',
+    'TypeParameter',
+}
+
 return {
     {
         'https://github.com/vague-theme/vague.nvim',
 
         opts = {
             on_highlights = function(hl, colors)
-                hl.NormalFloat = { bg = colors.bg }
+                hl.NormalFloat = { fg = colors.fg, bg = colors.bg }
+
+                hl.BlinkCmpMenu = { fg = colors.fg, bg = colors.bg }
+                hl.BlinkCmpMenuBorder = { fg = colors.floatBorder, bg = colors.bg }
+                hl.BlinkCmpKind = { fg = colors.fg }
+                hl.BlinkCmpScrollBarGutter = { bg = colors.bg }
+                hl.BlinkCmpScrollBarThumb = { bg = colors.line }
+
+                for _, kind in ipairs(blink_cmp_kinds) do
+                    hl['BlinkCmpKind' .. kind] = { fg = colors.fg }
+                end
 
                 hl.TelescopeSelectionCaret = { bg = colors.line }
                 hl.TelescopeSelection = { bg = colors.line }
