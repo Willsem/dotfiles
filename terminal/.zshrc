@@ -15,6 +15,10 @@ alias n="TERM=wezterm nvim"
 alias vi="TERM=wezterm nvim"
 alias vim="TERM=wezterm nvim"
 
+function go_run() {
+    go run "$1" 2>&1 | jq -Rr 'fromjson? // .'
+}
+
 export EMACS="*term*"
 
 export PATH=$PATH:/usr/local/opt/llvm/bin
@@ -31,7 +35,6 @@ export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
 export CMAKE_PREFIX_PATH=/usr/local/opt/qt5/
-export TERM='xterm-256color'
 export EDITOR='nvim'
 export VISUAL='nvim'
 export GOPATH=~/go
