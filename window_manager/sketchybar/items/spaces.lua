@@ -9,7 +9,7 @@ local function space_selection(env)
     local color = env.SELECTED == 'true' and colors.ansi.red or colors.fg
 
     sbar.set(env.NAME, {
-        label = {
+        icon = {
             color = color,
         },
     })
@@ -19,11 +19,15 @@ local spaces = {}
 for i = 1, 10, 1 do
     local space = sbar.add('space', {
         associated_space = i,
-        label = {
+        icon = {
             string = icons.windows[tostring(i)],
-            padding_left = 2,
-            padding_right = 2,
+            drawing = true,
+            padding_left = 0,
+            padding_right = 0,
             color = colors.fg,
+        },
+        label = {
+            drawing = false,
         },
         background = {
             color = colors.transparent,

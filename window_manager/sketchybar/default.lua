@@ -25,7 +25,7 @@ sbar.default({
     },
     background = {
         height = settings.height - 8,
-        corner_radius = 8,
+        corner_radius = 4,
         border_width = 1,
         border_color = colors.fg,
         color = colors.bg,
