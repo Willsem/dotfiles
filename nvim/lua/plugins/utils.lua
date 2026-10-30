@@ -10,30 +10,34 @@ return {
 
     {
         'petertriho/nvim-scrollbar',
+        -- v2 moves to main on 2026-11-16.
+        branch = 'refactor/v2',
         opts = {
-            excluded_buftypes = {
-                'terminal',
-                'dashboard',
+            exclude = {
+                buftypes = {
+                    'terminal',
+                    'dashboard',
+                },
+                filetypes = {
+                    'blink-cmp-menu',
+                    'dropbar_menu',
+                    'dropbar_menu_fzf',
+                    'DressingInput',
+                    'cmp_docs',
+                    'cmp_menu',
+                    'noice',
+                    'prompt',
+                    'TelescopePrompt',
+                    'neo-tree',
+                },
             },
-            excluded_filetypes = {
-                'blink-cmp-menu',
-                'dropbar_menu',
-                'dropbar_menu_fzf',
-                'DressingInput',
-                'cmp_docs',
-                'cmp_menu',
-                'noice',
-                'prompt',
-                'TelescopePrompt',
-                'neo-tree',
-            },
-            handlers = {
+            providers = {
                 cursor = false,
                 diagnostic = true,
                 gitsigns = true,
-                handle = true,
                 search = true,
                 ale = false,
+                marks = false,
             },
         },
     },
