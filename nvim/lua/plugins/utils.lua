@@ -1,3 +1,8 @@
+local function add_lua_library(plugin)
+    -- These libraries keep their modules at the repository root, outside lua/.
+    package.path = package.path .. ';' .. plugin.dir .. '/?.lua;' .. plugin.dir .. '/?/init.lua'
+end
+
 return {
     {
         'mrjones2014/smart-splits.nvim',
@@ -44,12 +49,22 @@ return {
 
     {
         'rest-nvim/rest.nvim',
+        -- Its rockspec pins an unavailable HTTP parser; nvim-treesitter installs it instead.
+        build = false,
         dependencies = {
             'nvim-treesitter/nvim-treesitter',
-            opts = function(_, opts)
-                opts.ensure_installed = opts.ensure_installed or {}
-                table.insert(opts.ensure_installed, 'http')
-            end,
+            'nvim-neotest/nvim-nio',
+            'j-hui/fidget.nvim',
+            {
+                'lunarmodules/lua-mimetypes',
+                build = false,
+                config = add_lua_library,
+            },
+            {
+                'manoelcampos/xml2lua',
+                build = false,
+                config = add_lua_library,
+            },
         },
 
         config = function(_, _)
